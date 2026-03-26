@@ -6,7 +6,7 @@ A structured PM workflow system for moving from requirement intake to demo itera
 
 一个面向产品经理的结构化工作流系统，用于需求收敛、Demo 迭代、嵌入式 PRD 交付和版本化项目资产管理。
 
-This package is the **public/open-source draft** of a workflow that was originally developed in a personal-first setup and then extracted into a reusable form.
+This repository provides a structured PM workflow system derived from real working practice and organized into a reusable public package.
 
 It is designed for PMs who want something more operational than "just write a PRD", but less chaotic than scattered prompts, ad hoc folders, and undocumented iteration.
 
@@ -66,7 +66,7 @@ That makes continuation, review, and freeze baselines easier to manage over time
 ### 4) Public package does not assume private memory
 The open-source package does **not** bundle a private personal memory operating layer by default.
 
-If you want memory integration, treat it as an optional companion layer rather than the default core package.
+Memory integration is intentionally treated as an optional companion layer rather than part of the default core package.
 
 ### 5) Explicit initialization instead of hidden assumptions
 The public version is expected to initialize a project-assets root explicitly rather than silently depending on the author's local environment.
@@ -201,7 +201,7 @@ should remain stable.
 
 ## Sample project
 
-If you want to understand the practical project shape after init, start here:
+For a practical example of project structure after init, start here:
 - `examples/sample-project/README.md`
 - `examples/sample-project/study-session-checkin/`
 
@@ -233,14 +233,14 @@ This init step is separate from project creation.
 - **Init** prepares the global root config.
 - **Project creation** prepares one actual project directory and its internal structure.
 
-For the current draft, see:
+Detailed initialization notes:
 - `packaging/pm-workflow-init-spec.md`
 
 ---
 
 ## What this package is good for
 
-This package is especially useful if you want to:
+This package is especially useful for:
 - structure PM work beyond chat-only prompting
 - separate requirement intake from demo design and delivery packaging
 - keep demo outputs and PRD outputs linked instead of drifting apart
@@ -251,9 +251,9 @@ This package is especially useful if you want to:
 
 ## Current status
 
-This is a structured open-source draft prepared from a personal-first workflow.
+This repository is a structured open-source PM workflow package with a usable core workflow and supporting public-facing setup materials.
 
-The core workflow is usable, and the public package now includes:
+The core workflow is usable, and the public package currently includes:
 - an initial PowerShell init script
 - a neutralized example config
 - an initialization spec
@@ -261,7 +261,7 @@ The core workflow is usable, and the public package now includes:
 - a permissive open-source license
 - a formal contribution guide
 
-Current public-facing gaps still worth improving:
+There is still room for further improvement, including:
 - a cross-platform init command or installer
 - richer example project artifacts
 - one end-to-end example showing intake → demo → embedded PRD → freeze baseline
@@ -269,9 +269,9 @@ Current public-facing gaps still worth improving:
 
 ---
 
-## Recommended next steps
+## Further enhancement directions
 
-If you want to make this package easier for others to adopt, the highest-leverage next additions are:
+Priority enhancement areas include:
 1. a cross-platform init command or script set
 2. a richer sample project with more realistic artifacts
 3. one end-to-end example showing intake → demo → embedded PRD → freeze baseline

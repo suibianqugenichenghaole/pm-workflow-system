@@ -4,7 +4,7 @@
 
 这是一套面向产品经理的结构化工作流系统，用来把工作从**需求收敛**推进到**Demo 迭代**、**嵌入式 PRD 交付**，以及**项目资产 / 版本 / 快照管理**。
 
-这个仓库是一个**公开版 / 开源草案**，它最初来自个人优先的真实工作流，后来被抽离成更可复用的形式。
+这个仓库提供了一套面向公开复用的 PM 工作流系统，来源于真实工作实践，并被整理成可复用的公开包。
 
 它适合这样的 PM：
 - 不想停留在“写一篇 PRD 就完了”
@@ -71,7 +71,7 @@
 ### 4）公开版默认不绑定私有 memory 层
 这个公开包**默认不包含个人私有 memory operating layer**。
 
-如果未来要接 memory，更适合把它当成一个可选 companion layer，而不是默认内置到核心包里。
+如需接入 memory，更适合将其作为可选 companion layer，而不是默认内置到核心包里。
 
 ### 5）强调显式初始化，而不是依赖作者本地环境
 公开版的目标不是“在作者电脑上能跑”，而是“别人拿到后能知道第一步怎么开箱”。
@@ -208,18 +208,18 @@ pwsh ./scripts/init-pm-workflow.ps1 -ProjectsRoot "D:\pm-workflow-projects" -For
 
 ## 示例项目
 
-如果你想看 init 之后一个项目实际应该长什么样，建议先看：
+如需查看 init 之后一个项目的实际结构，可优先阅读：
 - `examples/sample-project/README.md`
 - `examples/sample-project/study-session-checkin/`
 
-这个 sample project 刻意做得比较轻，主要是为了展示：
-- 一个项目根目录长什么样
-- current baseline 从哪里进
-- continuation entry 应该怎么放
+这个 sample project 刻意保持轻量，主要用于展示：
+- 一个项目根目录应如何组织
+- current baseline 从哪里进入
+- continuation entry 应如何放置
 - `working/` 和 `versions/v0.1/` 如何分层
-- snapshot manifest 怎么挂
+- snapshot manifest 如何挂接
 
-你可以把它理解成“项目结构实物样板”，不是完整业务案例。
+它更接近“项目结构样板”，而不是完整业务案例。
 
 ---
 
@@ -238,14 +238,14 @@ pwsh ./scripts/init-pm-workflow.ps1 -ProjectsRoot "D:\pm-workflow-projects" -For
 - **Init**：准备全局配置和项目资产根目录
 - **Project creation**：创建某个具体项目的目录、元信息和入口文件
 
-当前草案可以参考：
+详细初始化说明见：
 - `packaging/pm-workflow-init-spec.md`
 
 ---
 
 ## 这套包适合什么场景
 
-如果你希望做到下面这些事，这个包会比较有价值：
+这套包尤其适用于以下场景：
 - 不再只靠聊天推进 PM 工作
 - 把需求 intake、Demo 设计、PRD 交付拆成清晰阶段
 - 让 Demo 和 PRD 保持联动，而不是各自漂移
@@ -256,9 +256,9 @@ pwsh ./scripts/init-pm-workflow.ps1 -ProjectsRoot "D:\pm-workflow-projects" -For
 
 ## 当前状态
 
-这是一个从个人真实工作流中抽离出来的**结构化开源草案**。
+这是一个结构化的开源 PM 工作流仓库，核心流程已经可用，并具备面向公开使用的基础包装层。
 
-核心流程已经可用，而且当前公开包已经包含：
+核心流程已经可用，当前公开包已包含：
 - 第一版 PowerShell init 脚本
 - 中性化后的示例配置
 - 初始化说明 spec
@@ -266,7 +266,7 @@ pwsh ./scripts/init-pm-workflow.ps1 -ProjectsRoot "D:\pm-workflow-projects" -For
 - 一个宽松可复用的开源 License
 - 一份正式的贡献说明
 
-当前仍值得继续补强的能力包括：
+当前仍有继续完善空间，包括：
 - 跨平台 init 命令或安装方案
 - 更丰富的 sample project 产物
 - 一条完整的 intake → demo → embedded PRD → freeze baseline 端到端示例
@@ -274,9 +274,9 @@ pwsh ./scripts/init-pm-workflow.ps1 -ProjectsRoot "D:\pm-workflow-projects" -For
 
 ---
 
-## 建议的下一步
+## 后续增强方向
 
-如果你想让这套包更容易被别人拿来用，当前最值得做的增强是：
+后续可优先考虑以下增强项：
 1. 提供跨平台的 init 命令或脚本集
 2. 提供一个更丰富、更贴近真实业务的 sample project
 3. 提供一条完整链路的 end-to-end 示例
