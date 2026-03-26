@@ -1,0 +1,10 @@
+{
+  "version": "v0.1",
+  "stage": "review",
+  "status": "current",
+  "replaces": null,
+  "ruleBaseline": "../rules/rule-baseline.md",
+  "demoBaseline": "../demo/demo-overview.md",
+  "prdBaseline": "../prd/embedded-prd.md",
+  "mappingBaseline": "../mappings/linkage.json"
+}

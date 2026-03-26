@@ -1,0 +1,11 @@
+{
+  "projectSlug": "study-session-checkin",
+  "projectName": "Study Session Check-in Optimization",
+  "description": "A lightweight sample project showing the minimum practical structure of a PM workflow project.",
+  "currentVersion": "v0.1",
+  "currentStage": "review",
+  "entry": {
+    "currentBaseline": "indexes/current-baseline.json",
+    "continuation": "indexes/continuation-entry.md"
+  }
+}

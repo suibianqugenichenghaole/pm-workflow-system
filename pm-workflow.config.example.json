@@ -1,0 +1,20 @@
+{
+  "projectsRoot": "<your-project-assets-root>",
+  "stages": ["draft", "review", "frozen", "historical", "deprecated"],
+  "artifactDirs": {
+    "rules": "rules",
+    "demo": "demo",
+    "prd": "prd",
+    "snapshots": "snapshots",
+    "mappings": "mappings",
+    "diffs": "diffs",
+    "attachments": "attachments",
+    "indexes": "indexes"
+  },
+  "naming": {
+    "versionPrefix": "v",
+    "mainEntry": "current",
+    "reviewEntry": "review",
+    "deliveryEntry": "delivery"
+  }
+}

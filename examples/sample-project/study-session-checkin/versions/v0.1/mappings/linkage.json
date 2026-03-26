@@ -1,0 +1,21 @@
+{
+  "version": "v0.1",
+  "stage": "review",
+  "links": [
+    {
+      "rule": "clearer check-in status copy",
+      "demo": "demo-overview.md",
+      "prd": "embedded-prd.md"
+    },
+    {
+      "rule": "stronger completion feedback",
+      "demo": "demo-overview.md",
+      "prd": "embedded-prd.md"
+    },
+    {
+      "rule": "next study action guidance",
+      "demo": "demo-overview.md",
+      "prd": "embedded-prd.md"
+    }
+  ]
+}

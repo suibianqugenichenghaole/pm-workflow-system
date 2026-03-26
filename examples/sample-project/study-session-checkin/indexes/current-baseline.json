@@ -1,0 +1,11 @@
+{
+  "project": "study-session-checkin",
+  "version": "v0.1",
+  "stage": "review",
+  "ruleBaseline": "../versions/v0.1/rules/rule-baseline.md",
+  "demoBaseline": "../versions/v0.1/demo/demo-overview.md",
+  "prdBaseline": "../versions/v0.1/prd/embedded-prd.md",
+  "mappingBaseline": "../versions/v0.1/mappings/linkage.json",
+  "snapshot": "../snapshots/v0.1-review.json",
+  "status": "current"
+}
