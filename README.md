@@ -1,6 +1,10 @@
 # PM Workflow System
 
+[English](./README.md) | [简体中文](./README.zh-CN.md)
+
 A structured PM workflow system for moving from requirement intake to demo iteration, embedded PRD delivery, and project asset/version management.
+
+一个面向产品经理的结构化工作流系统，用于需求收敛、Demo 迭代、嵌入式 PRD 交付和版本化项目资产管理。
 
 This package is the **public/open-source draft** of a workflow that was originally developed in a personal-first setup and then extracted into a reusable form.
 
