@@ -195,6 +195,24 @@ Prefer:
 Prefer:
 - document-primary or section-led shell
 
+### If the right-side artifact is an App page
+Prefer:
+- balanced shell with a document-primary default split
+- or document-primary shell when the App page is narrow and the left side needs to carry more review explanation
+
+Default implication:
+- App review shells should usually open with a wider left pane than backend workbench shells
+- because the right-side prototype is visually narrower and otherwise leaves dead space
+
+### If the right-side artifact is a backend workbench
+Prefer:
+- balanced shell
+- or demo-primary shell when the backend page is especially wide and table / config dense
+
+Default implication:
+- backend review shells should not inherit the same left-heavy default used for narrow App pages
+- because the prototype side usually needs more horizontal room by default
+
 ---
 
 ## Shared shell elements

@@ -22,6 +22,7 @@ Complete these tasks:
   - prototype draft
   - formal PRD / embedded-PRD delivery
 - output a structured requirement skeleton for downstream skills
+- output a prototype-annotation-ready rule package when the immediate deliverable is "notes beside wireframes/prototypes" rather than a full PRD
 - produce a handoff that downstream skills can directly consume
 - receive rule-change signals from downstream demo iteration when business logic is challenged or scope changes
 - update the current requirement skeleton and rule baseline after valid upstream-worthy changes
@@ -78,6 +79,23 @@ If the rules are still case piles or the trigger/state model is still unstable, 
 ### 6) Produce a structured requirement handoff
 Output a requirement skeleton and handoff package strong enough for downstream skills to work from without reconstructing the baseline from raw chat.
 
+### 7) Reformat for the real delivery surface
+If the user is clearly preparing:
+- notes beside prototype images
+- annotations in Figma / Axure / screenshots
+- page-by-page review comments
+
+then do not stop at a generic requirement summary.
+
+Reformat the confirmed logic into an annotation-ready package that:
+- groups rules by screen or module
+- separates global rules from page-specific rules
+- separates save logic, transfer logic, and deletion logic when those belong to different screenshots
+- uses short numbered headings suitable for prototype side notes
+- avoids long prose blocks that are hard to paste next to wireframes
+
+When doing this, optimize for review consumption, not for document elegance.
+
 ## Output expectations
 
 Structure output around:
@@ -91,6 +109,42 @@ Structure output around:
 8. scope summary
 9. readiness judgment
 10. downstream handoff and next recommended action
+
+When the output target is prototype annotations, prefer a second-layer output shape:
+1. global rules
+2. per-screen rules
+3. special interaction logic
+4. save/update/delete logic
+5. unresolved items if any
+
+Default annotation-writing rules:
+- keep each block short enough to sit beside one prototype area
+- prefer numbered headings such as `1.1`, `1.2`, `2.1`
+- bind each rule block to one screen or one interaction instead of one giant section
+- separate "what this page does" from "what happens on save"
+- if two category types or object types exist, compare them explicitly in-place instead of burying the distinction in prose
+
+## Output format guidance for prototype / config-page text
+
+When the user is drafting text to paste directly into prototypes, config pages, or product annotations:
+
+- default to the page's actual reading order instead of generic PRD order
+- put page-level purpose first, then fields, then interactions, then linkage rules, then business-rule supplements
+- keep content grouped by module; do not mix field definitions and system-rule background back and forth
+- write field name + required/optional + value range + special rules together in one place
+- when a page has dialogs or popups, describe the parent page first, then the popup as a separate module
+- when frontend/backend linkage exists, put those linkage rules after the page field/interaction section, not before
+- if there is a large shared rule model, keep only the minimum rule supplement needed by this page and avoid re-pasting the whole global rule discussion
+- prefer short declarative bullets over long narrative paragraphs
+- avoid filler, repeated framing, and cross-topic detours
+
+Recommended structure for backend config pages:
+1. page purpose
+2. page fields
+3. popup or submodule structure when relevant
+4. page interactions and linkage
+5. frontend display / selling linkage
+6. business rule supplement only when the page depends on it
 
 ## Relationship with downstream skills
 
@@ -112,6 +166,7 @@ Read or use these only when relevant:
 - `references/requirement-types.md` for detailed type taxonomy
 - `references/readiness-gates.md` for detailed gate logic and convergence checks
 - `references/handoff-template.md` for downstream handoff object structure
+- `references/prototype-annotation-pattern.md` when the deliverable needs to be pasted beside prototype screens or image annotations
 - `references/intake-anti-patterns.md` when intake quality looks noisy, shallow, or pseudo-complete
 - `rule-change-signal` when downstream demo work surfaces a possible requirement-baseline change
 
@@ -137,3 +192,4 @@ When optimizing, prefer adjusting:
 3. readiness judgment
 4. handoff structure
 5. special-scenario scanning
+6. prototype-annotation packaging quality

@@ -34,18 +34,20 @@
 
 ## 这套系统的特点
 
-### 1）四核分工，而不是一个“大一统提示词”
-整个工作流围绕 4 个核心技能构建，而且边界是清楚的：
+### 1）六段工作流内核，而不是一个“大一统提示词”
+整个工作流围绕 6 个核心技能构建，而且边界是清楚的：
 
 - `pm-requirement-intake`：负责需求 intake、readiness、规则收敛
 - `pm-demo-design`：负责 Demo 生成、迭代、冻结前检查信号
+- `pm-design-absorption`：负责把截图 / 设计稿吸收到可复用组件和页面骨架里
+- `pm-react-prototype-execution`：负责把结构化 handoff 变成可运行的 React 原型基线
 - `pm-embedded-prd`：负责左文右演示的交付壳层，以及映射关系组织
 - `pm-project-ops`：负责项目资产、版本、快照、目录结构与存储规则
 
 这不是一个“什么都做”的超级提示词，而是一个**模块化、可拆分职责的 PM 工作流内核**。
 
 ### 2）带有命令式技能层，适合高频复用检查
-除了四个核心技能，还包含一组更轻量的命令式技能：
+除了六个核心技能，还包含一组更轻量的命令式技能：
 
 - `rule-change-signal`
 - `freeze-readiness-check`
@@ -85,6 +87,8 @@
 ### 核心技能
 - `pm-requirement-intake`
 - `pm-demo-design`
+- `pm-design-absorption`
+- `pm-react-prototype-execution`
 - `pm-embedded-prd`
 - `pm-project-ops`
 
@@ -111,6 +115,8 @@
 skills/public/
   pm-requirement-intake/
   pm-demo-design/
+  pm-design-absorption/
+  pm-react-prototype-execution/
   pm-embedded-prd/
   pm-project-ops/
   rule-change-signal/
@@ -271,6 +277,9 @@ pwsh ./scripts/init-pm-workflow.ps1 -ProjectsRoot "D:\pm-workflow-projects" -For
 - 更丰富的 sample project 产物
 - 一条完整的 intake → demo → embedded PRD → freeze baseline 端到端示例
 - 可选 memory integration 文档
+
+关于这轮本地到公开包的更新差异、使用前置条件，以及 Axhub Make 的致谢边界，见：
+- `UPDATE-NOTES.md`
 
 ---
 

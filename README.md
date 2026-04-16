@@ -31,10 +31,12 @@ This system tries to fix that by giving PM work a **structured operating model**
 
 ## What makes this package different
 
-### 1) Four-part PM workflow kernel
-The workflow is centered around four core skills with clear boundaries:
+### 1) Six-part PM workflow kernel
+The workflow is centered around six core skills with clear boundaries:
 - `pm-requirement-intake` — requirement intake, readiness, and rule convergence
 - `pm-demo-design` — demo generation, iteration, and freeze-readiness signaling
+- `pm-design-absorption` — absorb screenshots and mockups into reusable components and page grammar
+- `pm-react-prototype-execution` — turn structured handoff into a runnable React prototype baseline
 - `pm-embedded-prd` — linked left-doc/right-demo delivery shell and mapping-oriented output
 - `pm-project-ops` — project assets, versions, snapshots, and storage structure
 
@@ -78,6 +80,8 @@ The public version is expected to initialize a project-assets root explicitly ra
 ### Core skills
 - `pm-requirement-intake`
 - `pm-demo-design`
+- `pm-design-absorption`
+- `pm-react-prototype-execution`
 - `pm-embedded-prd`
 - `pm-project-ops`
 
@@ -104,6 +108,8 @@ The public version is expected to initialize a project-assets root explicitly ra
 skills/public/
   pm-requirement-intake/
   pm-demo-design/
+  pm-design-absorption/
+  pm-react-prototype-execution/
   pm-embedded-prd/
   pm-project-ops/
   rule-change-signal/
@@ -266,6 +272,9 @@ There is still room for further improvement, including:
 - richer example project artifacts
 - one end-to-end example showing intake → demo → embedded PRD → freeze baseline
 - optional memory integration documentation
+
+For the latest local-to-public packaging delta, practical preconditions, and Axhub Make attribution boundary, see:
+- `UPDATE-NOTES.md`
 
 ---
 

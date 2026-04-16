@@ -25,6 +25,33 @@ It is intentionally small, so the structure is easy to inspect.
 
 ---
 
+## Practical precondition reminder
+
+This sample demonstrates project structure, not the whole preparation workflow.
+
+In real use, especially for demo/prototype rounds with stronger design goals, you should usually prepare a small design-reference set first:
+- 1 to 3 representative screenshots
+- one clearly scoped page or page family
+- enough reference to separate atmosphere problems from component-grammar problems
+
+Those references should stay in a bounded project-side area instead of being mixed into global memory or random chat attachments.
+
+---
+
+## Public-package boundary
+
+This sample is intentionally sanitized for public sharing.
+
+That means it does **not** include:
+- private business screenshots
+- internal project names
+- private absolute machine paths
+- private pilot-only assets
+
+Use it to learn structure first, then replace the fictional content with your own real project assets locally.
+
+---
+
 ## Suggested first files to open
 
 1. `indexes/continuation-entry.md`

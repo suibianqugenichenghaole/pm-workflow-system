@@ -14,6 +14,8 @@ Turn a relatively stable rule baseline and demo baseline into a deliverable embe
 - view demo/pages/states on the right
 - move between both sides through explicit mapping and navigation
 
+When available, prefer a runnable React prototype baseline over a weaker demo-only placeholder for the right-side experience.
+
 Complete these tasks:
 - organize the PRD body into a clear delivery structure
 - build explicit mappings between rules, states, config effects, pages, and demo areas
@@ -62,6 +64,8 @@ Should include:
 - key interactions
 - which demos are validation-only vs relatively stable
 
+If a runnable React prototype baseline exists, prefer consuming that as the effective right-side baseline.
+
 ### 3) Unfrozen items
 Should include:
 - what is still pending
@@ -75,6 +79,7 @@ If these are missing or obviously inconsistent, do not silently continue as if t
 
 - you are a delivery composer, not a designer of demo pages
 - the value of embedded PRD is not simply "put a demo next to a document"; it is to make rule/state/config/page/demo relationships legible
+- when a runnable React prototype baseline exists, treat it as a stronger right-side baseline than narrative or weak mock demo output
 - a linked PRD must preserve version consistency
 - anything not carried by a demo must still be explicitly represented in the document
 - anything shown in demo behavior that matters to delivery must be traceable in the PRD
@@ -98,6 +103,8 @@ Before composing anything, check:
 - demo baseline present and stable enough
 - versions aligned or at least explicitly explainable
 - unfrozen items documented
+
+If both a demo baseline and a runnable React prototype baseline exist, prefer the React baseline and explain the relationship clearly.
 
 If not, downgrade output to a review/draft package or return upstream.
 
@@ -123,6 +130,17 @@ Generate a shell that supports:
 - right demo inspection
 - doc ↔ demo navigation
 - clear version/stage/status visibility
+
+When the right side is a runnable React prototype, prefer this shell interaction model by default:
+- keep the right side as the primary review workspace instead of compressing it to make room for a long left-side document dump
+- keep the left side concise: global overview + current focus detail, not a full PRD pasted into the shell
+- let right-side prototype actions update the left-side focus when event linkage is available
+- make the full left column scroll as one readable area; avoid layouts where only a tiny lower subpanel scrolls
+- allow manual resize between left and right panes on desktop, because backend and app prototypes need different review proportions
+- provide a direct-open entry to the runnable prototype baseline
+- ensure prototype overlays such as tall modals/drawers remain reviewable to the bottom instead of being clipped by shell or viewport behavior
+
+Treat "left long doc + right iframe with no usable interaction model" as an anti-pattern even if basic links technically exist.
 
 ### 5) Mark delivery status honestly
 Clearly mark content as:
@@ -150,6 +168,7 @@ When handing work to `pm-project-ops`, prefer preserving at least:
 - mapping manifest or equivalent linkage object
 - review/delivery status and stability labeling context
 - version or baseline identity for the current round
+- the specific right-side baseline identity used, especially when it is a runnable React prototype baseline
 
 ## When to load references or command skills
 
@@ -169,6 +188,7 @@ Read or use these only when relevant:
 - do not use a raw long conversation as the primary baseline
 - do not present unstable content as formal delivery
 - do not reduce embedded PRD to "left doc + right iframe" without meaningful mappings
+- do not let shell layout make key prototype states unreachable, such as clipped tall modals or non-scrollable review areas
 
 ## Self-optimization trigger
 

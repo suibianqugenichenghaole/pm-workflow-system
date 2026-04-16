@@ -23,7 +23,9 @@ Complete these tasks:
 - enter design-enhancement mode only when logic is already relatively stable and stronger polish is useful
 - emit **rule-change signals** when demo iteration exposes rule-level change
 - judge when the current demo round is stable enough to freeze as a downstream baseline
+- output a React-ready handoff when the round is suitable for runnable prototype execution
 - output a structured handoff for `pm-embedded-prd` and `pm-project-ops`
+- when the immediate output is prototype-side annotations, emit page-bound note blocks instead of long generic explanation
 
 ## Boundaries
 
@@ -40,6 +42,7 @@ This skill is responsible for:
 This skill is not responsible for:
 - re-running full requirement intake from scratch
 - deciding whether a requirement should exist at all
+- directly implementing the runnable React prototype baseline
 - writing the final formal PRD
 - doing final embedded-delivery orchestration
 - silently converting rule changes into final business conclusions
@@ -89,6 +92,15 @@ Use when:
 
 Do not let design enhancement override business correctness.
 
+For backend/workbench pages:
+- design enhancement must not stop at softer cards, shadows, or colors
+- when real screenshots exist, absorb the page's component grammar first:
+  - filter-row structure
+  - toolbar density
+  - tab/tree/table relationship
+  - operation-column rhythm
+- if the result still feels like a prototype shell wearing nicer styling, keep iterating at the page-skeleton/component level instead of claiming the enhancement round is done
+
 For the detailed enhancement rules, read:
 - `references/design-enhancement-guidelines.md`
 
@@ -136,6 +148,7 @@ Do not keep iterating blindly when the issue actually belongs to another layer.
 ### 5) Judge downstream readiness
 Before handing work downstream, judge whether the current round is stable enough to:
 - continue demo iteration only
+- hand to `pm-react-prototype-execution`
 - freeze as a review/demo baseline
 - hand to `pm-embedded-prd`
 - save/freeze through `pm-project-ops`
@@ -153,6 +166,33 @@ For each round, structure output around:
 8. structured handoff
 9. next recommended action
 
+When the user is annotating prototype screens rather than asking for a standalone document, adapt the output to:
+- screen-by-screen note blocks
+- short numbered sections
+- one interaction family per block
+- explicit distinction between global rules and local screen behavior
+
+Default annotation-friendly output rules:
+- write for side placement beside images, not for continuous reading
+- keep each block self-contained enough to pair with one prototype
+- separate list-page rules, create/edit-page rules, and risky action rules
+- call out per-type differences directly in the relevant page block
+- use concise operational language over explanatory narrative
+
+When the next step is runnable React prototype work, the handoff should be strong enough for `pm-react-prototype-execution` to start without reconstructing scope from raw conversation.
+
+Prefer preserving at least:
+- round label
+- stage label
+- page list
+- page goal per page
+- core modules per page
+- state list per page
+- key interactions
+- rule-to-UI correspondence
+- out-of-scope items
+- known unstable or unresolved parts
+
 When the downstream target may include `pm-embedded-prd` or `pm-project-ops`, the handoff should preferably preserve at least:
 - demo baseline or round label
 - page list
@@ -168,6 +208,8 @@ Read or use these only when relevant:
 - `references/design-enhancement-guidelines.md` when entering enhancement mode
 - `references/demo-anti-patterns.md` when a demo looks persuasive but risky
 - `references/focus-sandbox-prototype-contract.md` when the demo may be embedded downstream and needs focused display capability
+- `../pm-requirement-intake/references/prototype-annotation-pattern.md` when the output must be pasted beside prototype screens or screenshots
+- `pm-react-prototype-execution` when the current round is ready to become a runnable React prototype baseline
 - `state-audit` when key states may be missing, weak, or misleading
 - `rule-change-signal` when demo iteration may have changed requirement meaning
 - `freeze-readiness-check` when deciding whether the current round can freeze
@@ -202,3 +244,4 @@ When optimizing, prefer adjusting:
 3. state checks
 4. rule-change handling
 5. output structure
+6. annotation-readability for prototype review

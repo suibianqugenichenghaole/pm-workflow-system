@@ -54,7 +54,7 @@ Current example:
 
 ```json
 {
-  "projectsRoot": "E:\\pm-workflow-projects",
+  "projectsRoot": "D:\\pm-workflow-projects",
   "stages": ["draft", "review", "frozen", "historical", "deprecated"],
   "artifactDirs": {
     "rules": "rules",
@@ -190,7 +190,7 @@ Migration should only require changing:
 - maybe a few client-specific entry settings
 
 Example:
-- Windows: `E:\pm-workflow-projects`
+- Windows: `D:\pm-workflow-projects`
 - Mac: `~/pm-workflow-projects`
 
 If the internal project structure is portable, this is a config change, not a project rewrite.
