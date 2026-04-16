@@ -4,11 +4,9 @@
 
 A PM workflow and prototype-delivery system for moving from requirement intake to demo iteration, runnable React prototypes, embedded PRD review, and project asset/version management.
 
-This repository packages a real working PM system into a reusable public form.
-
 It is designed for PMs who want something more operational than "just write a PRD", but also want something more concrete than prompt-only workflow theory.
 
-The recent major upgrade is not just "more workflow". It is a stronger prototype-delivery path:
+The biggest recent shift is that this system now supports a much more complete prototype-delivery path:
 - absorb screenshots and mockups into reusable page grammar instead of one-off imitation
 - turn structured handoff into runnable React prototype baselines
 - assemble embedded PRD review shells that stay linked to runnable demos
@@ -41,13 +39,12 @@ This system tries to fix that by giving PM work a structured operating model:
 
 ## What changed in this release
 
-The biggest change is that the public package now better reflects the system's prototype-delivery side instead of reading like a pure PM process kit.
+The biggest change is that the system now better reflects the prototype-delivery side instead of reading like a pure PM process kit.
 
 - `pm-design-absorption` is now public: screenshot and mockup intake should become reusable component grammar, not just visual imitation
 - `pm-react-prototype-execution` is now public: structured PM handoff can continue into a runnable React prototype baseline
 - embedded review shell guidance is stronger: App and backend review pages should not share the same default shell bias
 - sample-project guidance now calls out practical preconditions such as preparing representative screenshots before design-heavy rounds
-- public docs now explicitly mark the Axhub Make influence as selective adoption with attribution, not silent copying
 
 See [UPDATE-NOTES.md](./UPDATE-NOTES.md) for the detailed packaging delta.
 
@@ -55,15 +52,16 @@ See [UPDATE-NOTES.md](./UPDATE-NOTES.md) for the detailed packaging delta.
 
 ## What makes this package different
 
-### 1) It is not only a workflow package
-This package is meant to help PM work continue into actual prototype delivery.
+### 1) It covers the full PM delivery chain
+This system is built for the path from first requirement intake to reviewable PRD delivery.
 
-That means the "output side" matters:
-- demo structure
+That path includes:
+- requirement clarification and readiness judgment
+- demo/page structure iteration
 - design-reference absorption
-- runnable prototype baselines
-- embedded review shells
-- reusable UI asset accumulation
+- runnable prototype execution
+- embedded PRD assembly
+- project baseline and artifact management
 
 ### 2) Six-part PM + prototype kernel
 The workflow is centered around six core skills with clear boundaries:
@@ -99,13 +97,13 @@ It introduces a project-assets model with:
 
 That makes continuation, review, and freeze baselines easier to manage over time.
 
-### 5) Public package does not assume private memory
-The open-source package does not bundle a private personal memory operating layer by default.
+### 5) It does not assume private memory
+This package does not bundle a private personal memory operating layer by default.
 
 Memory integration is intentionally treated as an optional companion layer rather than part of the default core package.
 
 ### 6) Explicit initialization instead of hidden assumptions
-The public version is expected to initialize a project-assets root explicitly rather than silently depending on the author's local environment.
+The system is expected to initialize a project-assets root explicitly rather than silently depending on the author's local environment.
 
 ---
 
@@ -243,30 +241,28 @@ If you skip that, the system can still generate output, but it will drift more e
 
 ---
 
-## Public-package boundary
+## Package boundary
 
-This open-source package intentionally excludes:
+This repository intentionally excludes:
 - private project screenshots
 - pilot-only business documents
 - private absolute paths
 - internal-only template code assets
 
-It keeps the method layer, structure layer, and public-safe examples.
-
-Where outside influence exists, such as Axhub Make, it is treated as selective adoption with explicit attribution rather than silent borrowing.
+It keeps the method layer, structure layer, and safe example material.
 
 ---
 
 ## Current status
 
-This is now a usable public PM + prototype-delivery package.
+This is now a usable PM + prototype-delivery system.
 
-The current public package already includes:
+It already includes:
 - init script and config example
 - six core PM/prototype skills
 - command-style review helpers
 - a lightweight sample-project skeleton
-- public-safe packaging notes and update notes
+- packaging notes and update notes
 
 There is still room to improve, especially around:
 - broader cross-platform initialization
