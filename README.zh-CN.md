@@ -104,7 +104,7 @@
 ### 5）默认不绑定私有 memory 层
 这套系统默认不内置个人私有 memory operating layer。
 
-如果要接 memory，更适合把它当作 companion layer，而不是公开包的默认核心。
+如果要接 memory，更适合把它当作 companion layer，而不是项目里的默认核心。
 
 ### 6）强调显式初始化，而不是依赖作者本地环境
 它的目标不是“在作者电脑上能跑”，而是“别人拿到后知道怎么起步”。
