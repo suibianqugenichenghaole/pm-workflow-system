@@ -2,83 +2,117 @@
 
 [English](./README.md) | [简体中文](./README.zh-CN.md)
 
-这是一套面向产品经理的结构化工作流系统，用来把工作从**需求收敛**推进到**Demo 迭代**、**嵌入式 PRD 交付**，以及**项目资产 / 版本 / 快照管理**。
+这不是一套只会讲流程的 PM 工具包，而是一套把工作从需求 intake 推进到 Demo、可运行 React 原型、嵌入式 PRD 评审，以及项目资产/版本管理的系统。
 
-这个仓库提供了一套面向公开复用的 PM 工作流系统，来源于真实工作实践，并被整理成可复用的公开包。
+这个仓库把一套真实工作中跑出来的方法，整理成了可公开复用的版本。
 
 它适合这样的 PM：
-- 不想停留在“写一篇 PRD 就完了”
-- 不想让需求、Demo、PRD、版本记录散落在聊天和临时文件夹里
-- 想把 PM 工作变成一套可持续迭代的操作系统，而不是一次性提示词
+- 不想停留在“写一份 PRD 就算完”
+- 不想让需求、原型、PRD、版本记录散在聊天和临时文件夹里
+- 想把 PM 工作变成一条可继续、可复盘、可交付原型的链路
+
+这次最大的升级点，不只是“workflow 更完整了”，而是**原型交付能力**被正式提到了公开包里：
+- 截图 / 设计稿吸收不再只服务于一次性模仿，而是要沉成可复用的页面 grammar
+- 结构化 handoff 可以继续推进成可运行 React 原型基线
+- embedded PRD 不再只是左右分栏，而是和可运行原型保持联动
+- 可复用 UI 资产有 canonical template 作为沉淀落点
+
+如果你只想看抽象流程，这个包会显得偏重。
+如果你想要一条“需求 -> Demo -> 可运行原型 -> review-grade PRD”的稳定路径，这套东西才有意义。
 
 ---
 
 ## 为什么会有这个包
 
-很多 PM 工作流最后会卡在这几类问题上：
-- 需求澄清只存在于聊天里，后续无法追踪
-- Demo 和 PRD 各写各的，最后逐渐漂移
+很多 PM 工作最后会卡在这些问题上：
+- 需求澄清只留在聊天里，后续无法追踪
+- Demo 和 PRD 各写各的，最后慢慢漂移
 - 评审态、冻结态没有被明确表达
-- 版本基线不清楚，历史关系难以追溯
-- 项目文件越做越乱，最后变成一个大杂物堆
+- 版本基线不清楚，历史关系难以回看
+- 原型工作停留在截图层，没法继续变成真正可复用的产物
+- 项目文件越做越乱，最后变成大杂烩
 
-这套系统想解决的，就是这些结构性问题。
+这套系统想解决的就是这些结构性问题。
 
-它把 PM 工作拆成一个更清晰的链路：
-1. 通过显式的 readiness / 规则收敛处理需求输入
-2. 结合上下文和规则变化信号推进 Demo 设计与迭代
-3. 产出与 Demo 评审保持联动的嵌入式 PRD
-4. 用稳定的目录、版本、快照、索引方式管理项目资产
+它把 PM 工作拆成一条更清楚的链路：
+1. 用 readiness 和规则收敛处理需求输入
+2. 用 Demo 迭代和 rule-change signal 推进结构表达
+3. 把设计参考吸收到可复用组件和页面 grammar
+4. 把稳定 handoff 推进成可运行 React 原型基线
+5. 产出和 Demo 保持联动的 embedded PRD
+6. 用稳定目录、版本、快照、索引方式管理项目资产
 
 ---
 
-## 这套系统的特点
+## 这次版本真正升级了什么
 
-### 1）六段工作流内核，而不是一个“大一统提示词”
-整个工作流围绕 6 个核心技能构建，而且边界是清楚的：
+这次最重要的变化，是公开包终于把“原型交付”这一侧讲清楚了，而不再像一个只讲 PM 流程的说明书。
 
-- `pm-requirement-intake`：负责需求 intake、readiness、规则收敛
-- `pm-demo-design`：负责 Demo 生成、迭代、冻结前检查信号
-- `pm-design-absorption`：负责把截图 / 设计稿吸收到可复用组件和页面骨架里
-- `pm-react-prototype-execution`：负责把结构化 handoff 变成可运行的 React 原型基线
-- `pm-embedded-prd`：负责左文右演示的交付壳层，以及映射关系组织
+- `pm-design-absorption` 正式公开：截图 / 设计稿输入要沉成可复用 grammar，而不是一次性美化
+- `pm-react-prototype-execution` 正式公开：结构化 PM handoff 可以继续进入 React 原型执行
+- embedded review shell 的规则更明确：App 和 backend 不该共用同一种默认壳偏置
+- 示例项目补了更实用的前置条件：做设计吸收前，先准备代表性截图素材
+- 文档里明确标了 Axhub Make 是 selective adoption，并保留致谢边界
+
+详细变化见：[UPDATE-NOTES.md](./UPDATE-NOTES.md)
+
+---
+
+## 这套包的核心特点
+
+### 1）它不只是 workflow 包
+这套包不是只帮你“把流程说顺”，而是要把工作继续推进到原型交付层。
+
+也就是说，它关心的不只是输入过程，还关心这些输出：
+- Demo 结构
+- 设计参考吸收
+- 可运行原型基线
+- embedded review shell
+- 可复用 UI 资产沉淀
+
+### 2）六段 PM + 原型工作流内核
+整个系统围绕 6 个核心技能构建，而且边界清楚：
+- `pm-requirement-intake`：需求 intake、readiness、规则收敛
+- `pm-demo-design`：Demo 生成、迭代、冻结前信号判断
+- `pm-design-absorption`：把截图 / 设计稿吸收到可复用组件和页面 grammar
+- `pm-react-prototype-execution`：把结构化 handoff 变成可运行 React 原型基线
+- `pm-embedded-prd`：负责左文右原型交付壳和映射组织
 - `pm-project-ops`：负责项目资产、版本、快照、目录结构与存储规则
 
-这不是一个“什么都做”的超级提示词，而是一个**模块化、可拆分职责的 PM 工作流内核**。
+这不是一个“什么都做”的大 prompt，而是一套可拆职责的系统。
 
-### 2）带有命令式技能层，适合高频复用检查
-除了六个核心技能，还包含一组更轻量的命令式技能：
-
+### 3）带命令式技能层，适合高频复用检查
+除了 6 个核心技能，还带一组更轻量的检查层：
 - `rule-change-signal`
 - `freeze-readiness-check`
 - `state-audit`
 - `embedded-prd-audit`
 - `memory-export-summary`
 
-这些技能更适合触发那些反复出现的检查、审阅、校验动作，让流程不只是“能做”，而是“能反复稳定做”。
+这些更适合反复触发的检查、审阅、校验动作。
 
-### 3）强调项目资产 / 版本 / 快照管理
-这套系统不假设你可以靠聊天记录或脑内记忆来管理项目。
+### 4）强调项目资产 / 版本 / 快照管理
+这套系统不假设你可以靠聊天记录或脑内记忆管理项目。
 
-它显式引入了一套项目资产模型，包括：
+它显式引入了项目资产模型，包括：
 - working 区
-- versions 版本目录
-- snapshots 快照
-- indexes 索引
-- mappings 映射
-- historical 历史归档
+- versions 目录
+- snapshots
+- indexes
+- mappings
+- historical 归档
 
-这样做的价值是：后续继续推进、回看基线、冻结版本、比较差异时，不容易失控。
+这样后续 continuation、freeze、回看差异都会更稳。
 
-### 4）公开版默认不绑定私有 memory 层
-这个公开包**默认不包含个人私有 memory operating layer**。
+### 5）公开版默认不绑定私有 memory 层
+这个公开包默认不内置个人私有 memory operating layer。
 
-如需接入 memory，更适合将其作为可选 companion layer，而不是默认内置到核心包里。
+如果要接 memory，更适合把它当作 companion layer，而不是公开包的默认核心。
 
-### 5）强调显式初始化，而不是依赖作者本地环境
-公开版的目标不是“在作者电脑上能跑”，而是“别人拿到后能知道第一步怎么开箱”。
+### 6）强调显式初始化，而不是依赖作者本地环境
+公开版的目标不是“在作者电脑上能跑”，而是“别人拿到后知道怎么起步”。
 
-所以这套包需要一个明确的 init 路径，而不是默认绑定某个固定盘符或作者自己的目录习惯。
+所以这里强调 init 路径，而不是默认绑定某个固定盘符或作者自己的目录习惯。
 
 ---
 
@@ -99,11 +133,12 @@
 - `embedded-prd-audit`
 - `memory-export-summary`
 
-### 配置、包装与示例
+### 配置、打包与示例
 - `pm-workflow.config.example.json`
 - `packaging/pm-workflow-init-spec.md`
 - `scripts/init-pm-workflow.ps1`
 - `examples/sample-project/`
+- `UPDATE-NOTES.md`
 - `LICENSE`
 - `CONTRIBUTING.md`
 
@@ -135,6 +170,7 @@ examples/
   sample-project/
 
 pm-workflow.config.example.json
+UPDATE-NOTES.md
 LICENSE
 CONTRIBUTING.md
 ```
@@ -166,143 +202,78 @@ pwsh ./scripts/init-pm-workflow.ps1 -ProjectsRoot "D:\pm-workflow-projects" -For
 ### 方式 B：手动初始化
 
 #### 1）复制示例配置
-先把示例配置复制成正式配置：
-
 - 复制 `pm-workflow.config.example.json`
 - 保存为 `pm-workflow.config.json`
 
 #### 2）设置 `projectsRoot`
-选择你的 PM 项目资产根目录，也就是以后所有项目资产要存放的位置。
-
-示例：
-
-```json
-{
-  "projectsRoot": "<你的项目资产根目录>",
-  "stages": ["draft", "review", "frozen", "historical", "deprecated"],
-  "artifactDirs": {
-    "rules": "rules",
-    "demo": "demo",
-    "prd": "prd",
-    "snapshots": "snapshots",
-    "mappings": "mappings",
-    "diffs": "diffs",
-    "attachments": "attachments",
-    "indexes": "indexes"
-  },
-  "naming": {
-    "versionPrefix": "v",
-    "mainEntry": "current",
-    "reviewEntry": "review",
-    "deliveryEntry": "delivery"
-  }
-}
-```
+选择你的 PM 项目资产根目录。
 
 #### 3）创建或确认根目录存在
-如果你设置的 `projectsRoot` 还不存在，就先创建它。
+如果 `projectsRoot` 不存在，就先建好。
 
-#### 4）没有特别理由时，先保留默认协议
-通常情况下，不建议一上来就改这些默认项：
-- 阶段名 `stages`
-- 工件目录名 `artifactDirs`
-- 命名规则 `naming`
-
-因为它们更像是这套系统的协议层，保持稳定更利于后续复用。
+#### 4）没有特殊原因时，先保留默认协议
+大多数情况下，不建议一开始就改 stage 名、artifactDirs、naming 规则。
 
 ---
 
 ## 示例项目
 
-如需查看 init 之后一个项目的实际结构，可优先阅读：
+想看 init 之后一个项目应该长什么样，先看这里：
 - `examples/sample-project/README.md`
 - `examples/sample-project/study-session-checkin/`
 
-这个 sample project 刻意保持轻量，主要用于展示：
-- 一个项目根目录应如何组织
+这个 sample project 故意保持轻量，主要展示：
+- 一个项目根目录怎么组织
 - current baseline 从哪里进入
-- continuation entry 应如何放置
-- `working/` 和 `versions/v0.1/` 如何分层
-- snapshot manifest 如何挂接
+- continuation entry 应该怎么放
+- `working/` 和 `versions/v0.1/` 怎么分层
+- snapshot manifest 怎么挂接
+- 设计吸收素材入口怎么留
 
-它更接近“项目结构样板”，而不是完整业务案例。
-
----
-
-## 初始化模型
-
-这个公开版默认需要一个显式 init 步骤。
-
-最小初始化应当完成这 4 件事：
-1. 收集或确认 `projectsRoot`
-2. 写入 `pm-workflow.config.json`
-3. 在需要时创建项目资产根目录
-4. 确认系统已经可以继续进行项目创建和资产管理
-
-这里要区分两个概念：
-
-- **Init**：准备全局配置和项目资产根目录
-- **Project creation**：创建某个具体项目的目录、元信息和入口文件
-
-详细初始化说明见：
-- `packaging/pm-workflow-init-spec.md`
+它更接近“项目结构样板”，不是完整业务案例。
 
 ---
 
-## 这套包适合什么场景
+## 实际使用前的前置条件
 
-这套包尤其适用于以下场景：
-- 不再只靠聊天推进 PM 工作
-- 把需求 intake、Demo 设计、PRD 交付拆成清晰阶段
-- 让 Demo 和 PRD 保持联动，而不是各自漂移
-- 让版本基线、冻结点、历史关系更容易追溯
-- 把个人提示词升级成一个可复用、可迁移的 PM 工作流系统
+这套包在你准备了一些上下文之后，效果会明显更稳。
+
+尤其是做原型设计吸收时，建议提前准备：
+- 1 到 3 张代表性截图或 mockup
+- 一个明确的页面族或模块范围
+- 足够解释页面存在原因的规则上下文
+
+如果这些都没有，系统仍然能给结果，但更容易退回成“泛泛的 demo 美化”。
+
+---
+
+## 公开包边界
+
+这个开源包有意不包含这些内容：
+- 私有项目截图
+- pilot-only 业务文档
+- 私有绝对路径
+- 内部模板代码资产
+
+它公开的是方法层、结构层和公共安全示例。
+
+如果有外部来源影响，比如 Axhub Make，这里会按 selective adoption 方式标注清楚，而不是假装完全原创。
 
 ---
 
 ## 当前状态
 
-这是一个结构化的开源 PM 工作流仓库，核心流程已经可用，并具备面向公开使用的基础包装层。
+这已经是一套可用的公开版 PM + 原型交付包。
 
-核心流程已经可用，当前公开包已包含：
-- 第一版 PowerShell init 脚本
-- 中性化后的示例配置
-- 初始化说明 spec
-- 一个轻量 sample project 骨架
-- 一个宽松可复用的开源 License
-- 一份正式的贡献说明
+当前公开包已经包含：
+- init 脚本与配置示例
+- 六个核心 PM / prototype 技能
+- 一组命令式检查技能
+- 一个轻量 sample-project 骨架
+- 面向公开包的更新说明与边界说明
 
-当前仍有继续完善空间，包括：
-- 跨平台 init 命令或安装方案
-- 更丰富的 sample project 产物
-- 一条完整的 intake → demo → embedded PRD → freeze baseline 端到端示例
-- 可选 memory integration 文档
-
-关于这轮本地到公开包的更新差异、使用前置条件，以及 Axhub Make 的致谢边界，见：
-- `UPDATE-NOTES.md`
-
----
-
-## 后续增强方向
-
-后续可优先考虑以下增强项：
-1. 提供跨平台的 init 命令或脚本集
-2. 提供一个更丰富、更贴近真实业务的 sample project
-3. 提供一条完整链路的 end-to-end 示例
-4. 补清楚不同运行环境下的安装 / 使用说明
-
----
-
-## License
-
-当前仓库使用的是 **MIT License**。
-
-见：
-- `LICENSE`
-
----
-
-## Contributing
-
-见：
-- `CONTRIBUTING.md`
+后面仍然可以继续增强，尤其是：
+- 更完整的跨平台初始化
+- 更丰富的公开示例产物
+- 更完整的端到端公开案例
+- 可选的 memory integration 说明

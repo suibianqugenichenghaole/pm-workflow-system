@@ -2,13 +2,20 @@
 
 [English](./README.md) | [简体中文](./README.zh-CN.md)
 
-A structured PM workflow system for moving from requirement intake to demo iteration, embedded PRD delivery, and project asset/version management.
+A PM workflow and prototype-delivery system for moving from requirement intake to demo iteration, runnable React prototypes, embedded PRD review, and project asset/version management.
 
-一个面向产品经理的结构化工作流系统，用于需求收敛、Demo 迭代、嵌入式 PRD 交付和版本化项目资产管理。
+This repository packages a real working PM system into a reusable public form.
 
-This repository provides a structured PM workflow system derived from real working practice and organized into a reusable public package.
+It is designed for PMs who want something more operational than "just write a PRD", but also want something more concrete than prompt-only workflow theory.
 
-It is designed for PMs who want something more operational than "just write a PRD", but less chaotic than scattered prompts, ad hoc folders, and undocumented iteration.
+The recent major upgrade is not just "more workflow". It is a stronger prototype-delivery path:
+- absorb screenshots and mockups into reusable page grammar instead of one-off imitation
+- turn structured handoff into runnable React prototype baselines
+- assemble embedded PRD review shells that stay linked to runnable demos
+- keep reusable UI assets in a canonical template instead of losing them in one project
+
+If you only want abstract process guidance, this package is heavier than necessary.
+If you want a repeatable path from requirement -> demo -> runnable prototype -> review-grade PRD, this is the point.
 
 ---
 
@@ -19,30 +26,57 @@ Most PM workflows break down in one of these ways:
 - demos and PRDs drift apart
 - review states are implicit instead of explicit
 - version baselines are hard to trace
+- prototype work becomes one-off screenshots with no continuation path
 - project files turn into a flat dumping ground
 
-This system tries to fix that by giving PM work a **structured operating model**:
+This system tries to fix that by giving PM work a structured operating model:
 1. clarify requirements with explicit readiness and rule convergence
 2. iterate demos with context and rule-change signaling
-3. assemble embedded PRDs that stay linked to demo review
-4. store project assets, versions, baselines, and snapshots in a stable structure
+3. absorb design references into reusable component and page grammar
+4. turn stable handoff into runnable React prototype baselines
+5. assemble embedded PRDs that stay linked to demo review
+6. store project assets, versions, baselines, and snapshots in a stable structure
+
+---
+
+## What changed in this release
+
+The biggest change is that the public package now better reflects the system's prototype-delivery side instead of reading like a pure PM process kit.
+
+- `pm-design-absorption` is now public: screenshot and mockup intake should become reusable component grammar, not just visual imitation
+- `pm-react-prototype-execution` is now public: structured PM handoff can continue into a runnable React prototype baseline
+- embedded review shell guidance is stronger: App and backend review pages should not share the same default shell bias
+- sample-project guidance now calls out practical preconditions such as preparing representative screenshots before design-heavy rounds
+- public docs now explicitly mark the Axhub Make influence as selective adoption with attribution, not silent copying
+
+See [UPDATE-NOTES.md](./UPDATE-NOTES.md) for the detailed packaging delta.
 
 ---
 
 ## What makes this package different
 
-### 1) Six-part PM workflow kernel
+### 1) It is not only a workflow package
+This package is meant to help PM work continue into actual prototype delivery.
+
+That means the "output side" matters:
+- demo structure
+- design-reference absorption
+- runnable prototype baselines
+- embedded review shells
+- reusable UI asset accumulation
+
+### 2) Six-part PM + prototype kernel
 The workflow is centered around six core skills with clear boundaries:
-- `pm-requirement-intake` — requirement intake, readiness, and rule convergence
-- `pm-demo-design` — demo generation, iteration, and freeze-readiness signaling
-- `pm-design-absorption` — absorb screenshots and mockups into reusable components and page grammar
-- `pm-react-prototype-execution` — turn structured handoff into a runnable React prototype baseline
-- `pm-embedded-prd` — linked left-doc/right-demo delivery shell and mapping-oriented output
-- `pm-project-ops` — project assets, versions, snapshots, and storage structure
+- `pm-requirement-intake` - requirement intake, readiness, and rule convergence
+- `pm-demo-design` - demo generation, iteration, and freeze-readiness signaling
+- `pm-design-absorption` - absorb screenshots and mockups into reusable components and page grammar
+- `pm-react-prototype-execution` - turn structured handoff into a runnable React prototype baseline
+- `pm-embedded-prd` - linked left-doc/right-demo delivery shell and mapping-oriented output
+- `pm-project-ops` - project assets, versions, snapshots, and storage structure
 
 This is not one giant "do everything" prompt. It is a modular workflow with separable responsibilities.
 
-### 2) Command-style skills for repeatable checks
+### 3) Command-style skills for repeatable checks
 The package also includes narrower command-style skills for recurring tasks:
 - `rule-change-signal`
 - `freeze-readiness-check`
@@ -50,9 +84,9 @@ The package also includes narrower command-style skills for recurring tasks:
 - `embedded-prd-audit`
 - `memory-export-summary`
 
-These are meant to make repeated review or audit-style actions easier to trigger and standardize.
+These make review and audit-style actions easier to trigger and standardize.
 
-### 3) Explicit project structure and version management
+### 4) Explicit project structure and version management
 This workflow does not assume that project assets should live in random folders or be tracked by memory alone.
 
 It introduces a project-assets model with:
@@ -65,12 +99,12 @@ It introduces a project-assets model with:
 
 That makes continuation, review, and freeze baselines easier to manage over time.
 
-### 4) Public package does not assume private memory
-The open-source package does **not** bundle a private personal memory operating layer by default.
+### 5) Public package does not assume private memory
+The open-source package does not bundle a private personal memory operating layer by default.
 
 Memory integration is intentionally treated as an optional companion layer rather than part of the default core package.
 
-### 5) Explicit initialization instead of hidden assumptions
+### 6) Explicit initialization instead of hidden assumptions
 The public version is expected to initialize a project-assets root explicitly rather than silently depending on the author's local environment.
 
 ---
@@ -97,6 +131,7 @@ The public version is expected to initialize a project-assets root explicitly ra
 - `packaging/pm-workflow-init-spec.md`
 - `scripts/init-pm-workflow.ps1`
 - `examples/sample-project/`
+- `UPDATE-NOTES.md`
 - `LICENSE`
 - `CONTRIBUTING.md`
 
@@ -128,6 +163,7 @@ examples/
   sample-project/
 
 pm-workflow.config.example.json
+UPDATE-NOTES.md
 LICENSE
 CONTRIBUTING.md
 ```
@@ -160,48 +196,17 @@ pwsh ./scripts/init-pm-workflow.ps1 -ProjectsRoot "D:\pm-workflow-projects" -For
 
 #### 1) Copy the example config
 Create a real config file from the example:
-
 - copy `pm-workflow.config.example.json`
 - save it as `pm-workflow.config.json`
 
 #### 2) Set your `projectsRoot`
 Choose where your PM workflow project assets should live.
 
-Example:
-
-```json
-{
-  "projectsRoot": "<your-project-assets-root>",
-  "stages": ["draft", "review", "frozen", "historical", "deprecated"],
-  "artifactDirs": {
-    "rules": "rules",
-    "demo": "demo",
-    "prd": "prd",
-    "snapshots": "snapshots",
-    "mappings": "mappings",
-    "diffs": "diffs",
-    "attachments": "attachments",
-    "indexes": "indexes"
-  },
-  "naming": {
-    "versionPrefix": "v",
-    "mainEntry": "current",
-    "reviewEntry": "review",
-    "deliveryEntry": "delivery"
-  }
-}
-```
-
 #### 3) Create or verify the root directory
 If your chosen `projectsRoot` does not exist yet, create it.
 
 #### 4) Keep defaults unless you have a strong reason to change them
-For most users, the default:
-- stage names
-- artifact directory names
-- naming defaults
-
-should remain stable.
+For most users, the default stage names, artifact directory names, and naming defaults should remain stable.
 
 ---
 
@@ -219,85 +224,52 @@ It demonstrates:
 - one `working/` area
 - one `versions/v0.1/` baseline
 - one snapshot manifest
+- one lightweight design-intake placeholder
 
-Use it to understand how requirement, demo, PRD, mapping, and version metadata fit together in a real folder structure.
-
----
-
-## Initialization model
-
-The public package expects an explicit init step.
-
-At minimum, initialization should:
-1. collect or confirm `projectsRoot`
-2. write `pm-workflow.config.json`
-3. create the base project-assets root if needed
-4. confirm the system is ready for project creation and asset management
-
-This init step is separate from project creation.
-
-- **Init** prepares the global root config.
-- **Project creation** prepares one actual project directory and its internal structure.
-
-Detailed initialization notes:
-- `packaging/pm-workflow-init-spec.md`
+It is closer to a project-structure example than a full business case.
 
 ---
 
-## What this package is good for
+## Practical preconditions
 
-This package is especially useful for:
-- structure PM work beyond chat-only prompting
-- separate requirement intake from demo design and delivery packaging
-- keep demo outputs and PRD outputs linked instead of drifting apart
-- maintain versioned baselines and snapshots over time
-- prepare a reusable PM workflow rather than a one-off personal prompt
+This package works better when you prepare some context before asking for a design-heavy round.
+
+Especially for prototype or visual absorption work, prepare:
+- 1 to 3 representative screenshots or mockups
+- a clear page family or module scope
+- enough rule context to explain why the page exists
+
+If you skip that, the system can still generate output, but it will drift more easily toward generic "nice-looking demo" territory.
+
+---
+
+## Public-package boundary
+
+This open-source package intentionally excludes:
+- private project screenshots
+- pilot-only business documents
+- private absolute paths
+- internal-only template code assets
+
+It keeps the method layer, structure layer, and public-safe examples.
+
+Where outside influence exists, such as Axhub Make, it is treated as selective adoption with explicit attribution rather than silent borrowing.
 
 ---
 
 ## Current status
 
-This repository is a structured open-source PM workflow package with a usable core workflow and supporting public-facing setup materials.
+This is now a usable public PM + prototype-delivery package.
 
-The core workflow is usable, and the public package currently includes:
-- an initial PowerShell init script
-- a neutralized example config
-- an initialization spec
-- a lightweight sample project skeleton
-- a permissive open-source license
-- a formal contribution guide
+The current public package already includes:
+- init script and config example
+- six core PM/prototype skills
+- command-style review helpers
+- a lightweight sample-project skeleton
+- public-safe packaging notes and update notes
 
-There is still room for further improvement, including:
-- a cross-platform init command or installer
-- richer example project artifacts
-- one end-to-end example showing intake → demo → embedded PRD → freeze baseline
-- optional memory integration documentation
-
-For the latest local-to-public packaging delta, practical preconditions, and Axhub Make attribution boundary, see:
-- `UPDATE-NOTES.md`
-
----
-
-## Further enhancement directions
-
-Priority enhancement areas include:
-1. a cross-platform init command or script set
-2. a richer sample project with more realistic artifacts
-3. one end-to-end example showing intake → demo → embedded PRD → freeze baseline
-4. clearer install/use guidance for different agent or skill runtimes
-
----
-
-## License
-
-This repository currently uses the **MIT License**.
-
-See:
-- `LICENSE`
-
----
-
-## Contributing
-
-See:
-- `CONTRIBUTING.md`
+There is still room to improve, especially around:
+- broader cross-platform initialization
+- richer sample deliverables
+- more end-to-end public examples
+- optional memory integration guidance
