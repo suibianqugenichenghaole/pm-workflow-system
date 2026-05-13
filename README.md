@@ -8,6 +8,7 @@ It is designed for PMs who want something more operational than "just write a PR
 
 The biggest recent shift is that this system now supports a much more complete prototype-delivery path:
 - absorb screenshots and mockups into reusable page grammar instead of one-off imitation
+- write page-oriented PRDs from clarified requirements and current prototype baselines
 - turn structured handoff into runnable React prototype baselines
 - assemble embedded PRD review shells that stay linked to runnable demos
 - keep reusable UI assets in a canonical template instead of losing them in one project
@@ -31,9 +32,10 @@ This system tries to fix that by giving PM work a structured operating model:
 1. clarify requirements with explicit readiness and rule convergence
 2. iterate demos with context and rule-change signaling
 3. absorb design references into reusable component and page grammar
-4. turn stable handoff into runnable React prototype baselines
-5. assemble embedded PRDs that stay linked to demo review
-6. store project assets, versions, baselines, and snapshots in a stable structure
+4. write page-oriented PRDs from clarified requirements and current prototype baselines
+5. turn stable handoff into runnable React prototype baselines
+6. assemble embedded PRDs that stay linked to demo review
+7. store project assets, versions, baselines, and snapshots in a stable structure
 
 ---
 
@@ -43,6 +45,8 @@ The biggest change is that the system now better reflects the prototype-delivery
 
 - `pm-design-absorption` is now public: screenshot and mockup intake should become reusable component grammar, not just visual imitation
 - `pm-react-prototype-execution` is now public: structured PM handoff can continue into a runnable React prototype baseline
+- `pm-prd-writer` is included for page-oriented, implementation-readable Chinese PRD writing
+- shared component registry status rules now distinguish active, candidate, mapped-active, needs-confirmation, external-template, deferred, and drop
 - embedded review shell guidance is stronger: App and backend review pages should not share the same default shell bias
 - sample-project guidance now calls out practical preconditions such as preparing representative screenshots before design-heavy rounds
 
@@ -63,10 +67,11 @@ That path includes:
 - embedded PRD assembly
 - project baseline and artifact management
 
-### 2) Six-part PM + prototype kernel
-The workflow is centered around six core skills with clear boundaries:
+### 2) Seven-part PM + prototype kernel
+The workflow is centered around seven core skills with clear boundaries:
 - `pm-requirement-intake` - requirement intake, readiness, and rule convergence
 - `pm-demo-design` - demo generation, iteration, and freeze-readiness signaling
+- `pm-prd-writer` - page-oriented, implementation-readable PRD writing from clarified requirements
 - `pm-design-absorption` - absorb screenshots and mockups into reusable components and page grammar
 - `pm-react-prototype-execution` - turn structured handoff into a runnable React prototype baseline
 - `pm-embedded-prd` - linked left-doc/right-demo delivery shell and mapping-oriented output
@@ -112,6 +117,7 @@ The system is expected to initialize a project-assets root explicitly rather tha
 ### Core skills
 - `pm-requirement-intake`
 - `pm-demo-design`
+- `pm-prd-writer`
 - `pm-design-absorption`
 - `pm-react-prototype-execution`
 - `pm-embedded-prd`
@@ -141,6 +147,7 @@ The system is expected to initialize a project-assets root explicitly rather tha
 skills/public/
   pm-requirement-intake/
   pm-demo-design/
+  pm-prd-writer/
   pm-design-absorption/
   pm-react-prototype-execution/
   pm-embedded-prd/
@@ -150,6 +157,10 @@ skills/public/
   state-audit/
   embedded-prd-audit/
   memory-export-summary/
+
+docs/
+  component-library/
+    component-registry.md
 
 packaging/
   pm-workflow-init-spec.md
@@ -259,7 +270,7 @@ This is now a usable PM + prototype-delivery system.
 
 It already includes:
 - init script and config example
-- six core PM/prototype skills
+- seven core PM/prototype skills
 - command-style review helpers
 - a lightweight sample-project skeleton
 - packaging notes and update notes

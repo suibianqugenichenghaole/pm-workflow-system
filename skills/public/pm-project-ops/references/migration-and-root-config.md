@@ -23,7 +23,7 @@ That means:
 Do not confuse these three concepts.
 
 ### 1) Workspace root
-Where the OpenClaw workspace, skills, docs, and helper files live.
+Where the workflow client workspace, skills, docs, and helper files live.
 
 ### 2) Project-assets root
 Where PM workflow project folders live.
@@ -54,7 +54,7 @@ Current example:
 
 ```json
 {
-  "projectsRoot": "D:\\pm-workflow-projects",
+  "projectsRoot": "<projectsRoot>",
   "stages": ["draft", "review", "frozen", "historical", "deprecated"],
   "artifactDirs": {
     "rules": "rules",
@@ -77,7 +77,7 @@ Current example:
 
 `projectsRoot` is the project-asset root.
 It is not the same thing as:
-- OpenClaw workspace root
+- workflow client workspace root
 - current chat session working directory
 - skill installation directory
 
@@ -124,7 +124,7 @@ Missing config should trigger an explicit initialization path, not hidden assump
 
 ## Shared-root principle across clients
 
-OpenClaw and a local Codex client can use the same project-assets root **only if** they share:
+Two workflow clients can use the same project-assets root **only if** they share:
 - the same storage conventions
 - the same version/stage rules
 - the same artifact directory expectations
@@ -162,7 +162,7 @@ Examples:
 Avoid embedding machine-specific absolute paths inside internal project files unless truly necessary.
 
 This keeps migration easier when:
-- moving from `E:` to another drive
+- moving from one drive or mount point to another
 - copying a whole project folder to another machine
 - moving from Windows to Mac
 
@@ -190,7 +190,7 @@ Migration should only require changing:
 - maybe a few client-specific entry settings
 
 Example:
-- Windows: `D:\pm-workflow-projects`
+- Windows: `<projectsRoot>`
 - Mac: `~/pm-workflow-projects`
 
 If the internal project structure is portable, this is a config change, not a project rewrite.

@@ -131,6 +131,8 @@ Generate a shell that supports:
 - doc ↔ demo navigation
 - clear version/stage/status visibility
 
+#### Shell family selection
+
 When the right side is a runnable React prototype, prefer this shell interaction model by default:
 - keep the right side as the primary review workspace instead of compressing it to make room for a long left-side document dump
 - keep the left side concise: global overview + current focus detail, not a full PRD pasted into the shell
@@ -141,6 +143,47 @@ When the right side is a runnable React prototype, prefer this shell interaction
 - ensure prototype overlays such as tall modals/drawers remain reviewable to the bottom instead of being clipped by shell or viewport behavior
 
 Treat "left long doc + right iframe with no usable interaction model" as an anti-pattern even if basic links technically exist.
+
+Choose the correct shell family before composing:
+- app review shell for phone/app-client prototype review
+- backend review shell for dense backend workbench review
+- embedded delivery shell for stronger delivery or archive packages
+
+#### Canonical template rule
+
+When a canonical review shell template already exists for the current workflow family, treat it as the default shell source instead of re-implementing another shell from scratch.
+
+Default sequence:
+1. check the component registry's Embedded entries for `external-template` or canonical shell pointers
+2. locate the canonical shell source
+3. choose the correct shell family
+4. copy the canonical shell template first
+5. fill the minimum config set
+6. customize shell code only when the canonical template cannot truthfully carry the current review interaction model
+
+Minimum config set:
+- title
+- summary
+- badges
+- overview blocks
+- detail map
+- prototype URL
+- message type
+- shell-specific width defaults
+- right-side baseline identity
+- review or delivery status label
+
+#### Customization rule
+
+Customize shell code only when:
+- the current prototype needs an interaction model the canonical shell cannot represent
+- the right-side baseline has special focus or sandbox controls
+- prototype overlays, tall modals, drawers, or split-pane behavior would otherwise be clipped or unreachable
+- the shell family itself is being intentionally improved as a reusable template
+
+If customization happens, record what changed and whether the change should be promoted back to the canonical shell/template source.
+
+Treat "same structure, rewritten again" as a workflow regression. The shell should become easier to fill, not easier to reinvent.
 
 ### 5) Mark delivery status honestly
 Clearly mark content as:
@@ -169,6 +212,7 @@ When handing work to `pm-project-ops`, prefer preserving at least:
 - review/delivery status and stability labeling context
 - version or baseline identity for the current round
 - the specific right-side baseline identity used, especially when it is a runnable React prototype baseline
+- canonical shell/template source used, and whether any shell customization should be promoted back
 
 ## When to load references or command skills
 

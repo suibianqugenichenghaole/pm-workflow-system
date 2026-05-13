@@ -34,15 +34,22 @@ When the user provides screenshots, mockups, prototype images, or says "照着�
 Read only the minimum useful set:
 
 1. the new image references
-2. current relevant component docs
-3. current representative preview pages
-4. component evolution log if there is a likely repeated mismatch
+2. shared component registry when available:
+   - `<projectsRoot>\_component-library\docs\registry\component-registry.md`
+3. current relevant component docs
+4. current representative preview pages
+5. component evolution log if there is a likely repeated mismatch
 
 Recommended project files:
 - `src/docs/design-absorption/design-absorption-workflow.md`
 - `src/docs/design-absorption/incoming-reference-template.md`
 - `src/docs/design-absorption/component-evolution-log.md`
 - `src/docs/components/component-baseline.md`
+
+Recommended shared component-library files:
+- `<projectsRoot>\_component-library\README.md`
+- `<projectsRoot>\_component-library\docs\registry\component-registry.md`
+- `<projectsRoot>\_component-library\docs\absorption\`
 
 ## Classification step
 
@@ -81,6 +88,44 @@ A useful absorption round should update at least two of:
 - evolution log
 
 If you only edited one preview page, the absorption round is incomplete.
+
+For PM workflow projects under `<projectsRoot>`, if the reference reveals a stable reusable control or shell, update the shared component library first or record why it should remain project-local:
+- component code under `<projectsRoot>\_component-library\src\`
+- registry under `<projectsRoot>\_component-library\docs\registry\component-registry.md`
+- absorption note under `<projectsRoot>\_component-library\docs\absorption\`
+
+## Registry state rule
+
+The registry is a component maturity map, not a parking lot. `planned` may only be a temporary entry and must carry `next_action`.
+
+When a screenshot or prototype reference reveals a possible reusable component:
+
+1. Check whether an `active` component already covers it.
+2. If yes, mark or use `mapped-active` and name the existing component.
+3. If not covered but the pattern is stable, register it as `candidate`.
+4. If the pattern looks reusable but key boundaries are unclear, register it as `needs-confirmation` and list the missing confirmations.
+5. If it is only a single weak case, use `deferred` or `wait_for_more_screens` instead of pretending it is ready.
+6. If it should not be reused, mark `drop` or remove it from tracking.
+7. Only mark `active` after formal component source, README/docs, and a reusable reference exist.
+
+Allowed statuses:
+- `planned`: newly discovered possible reusable component; must include `next_action`.
+- `candidate`: stable reusable pattern confirmed, but no formal component source yet.
+- `needs-confirmation`: likely reusable, but missing interaction boundary, naming, or scope confirmation.
+- `mapped-active`: covered by an existing active component; do not create a duplicate.
+- `active`: formal component source and docs exist; can be directly reused.
+- `external-template`: capability lives in a workflow template or embedded shell, not component-library source.
+- `deferred`: intentionally postponed until more scenarios appear.
+- `drop`: not worth tracking as reusable.
+
+Allowed `next_action` values:
+- `extract_component`: implement component source and README next.
+- `wait_for_more_screens`: wait for more references before extracting.
+- `merge_with_existing`: map to an existing component.
+- `defer`: postpone.
+- `drop`: stop tracking.
+
+Absorption output must state which registry entries changed and why.
 
 ## Trust labeling
 
@@ -126,6 +171,12 @@ When the reference is a real Chinese B-end backend page:
   - row-level action wording and spacing
 - prefer updating reusable backend components before celebrating page-level polish
 - if the page only becomes "more polished" but still does not read like a backend workbench, the absorption round is not complete yet
+
+For backend edit forms, check `backend/edit` in the shared component library before patching a page directly. Label-left rows, input counters, selects, radio groups, switches, number inputs, upload fields, hints, and error states should become or reuse shared edit components.
+
+## Change Log
+
+- 2026-04-27: Added shared component library read/write targets so screenshot absorption updates `<projectsRoot>\_component-library` instead of remaining chat-only or page-local.
 
 ## Output expectation
 

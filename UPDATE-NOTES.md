@@ -75,3 +75,13 @@ Before the next GitHub sync, check at least these:
 - whether the public package should document design-reference intake as a precondition
 - whether the sample project should remain purely neutral or gain a more realistic prototype-side example
 - whether the Axhub Make attribution note should live in README, UPDATE-NOTES, or both
+
+---
+
+## 2026-05 public sync additions
+
+- Added `pm-prd-writer` for page-oriented, implementation-readable PRD writing after requirements and page/prototype baselines are already clarified.
+- Strengthened shared component registry handling across demo design, design absorption, and React prototype execution.
+- Added `docs/component-library/component-registry.md` as a registry-state reference for `active`, `candidate`, `needs-confirmation`, `mapped-active`, `external-template`, `deferred`, and `drop`.
+- Updated embedded PRD shell guidance to prefer canonical shell templates and record shell customization back to the template source when reusable.
+- Sanitized local project-root references to `<projectsRoot>` in public skill guidance.

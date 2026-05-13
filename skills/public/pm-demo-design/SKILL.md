@@ -104,6 +104,31 @@ For backend/workbench pages:
 For the detailed enhancement rules, read:
 - `references/design-enhancement-guidelines.md`
 
+## Shared component registry rule
+
+Before drawing or revising React-backed prototype pages for PM workflow projects, check the shared component registry:
+- `<projectsRoot>\_component-library\docs\registry\component-registry.md`
+
+Use the registry as a reuse decision table, not as a loose wishlist.
+
+Status handling:
+- `active`: use the existing component as the default visual grammar.
+- `mapped-active`: use the mapped active component; do not create a duplicate component name.
+- `candidate`: note in the handoff that this should be extracted when the prototype round implements a similar page.
+- `needs-confirmation`: note exactly which interaction boundary, naming, or scope question must be confirmed before extraction.
+- `planned`: treat as a temporary entry only; require a `next_action` before handing work downstream.
+- `external-template`: point to the template or shell source instead of treating it as component-library source debt.
+- `deferred` / `drop`: do not block the demo round on it.
+
+`planned` entries must be triaged before the next handoff:
+- `extract_component`: enough material exists; downstream prototype work should create component source and README.
+- `wait_for_more_screens`: only one weak example exists; keep page-local for now.
+- `merge_with_existing`: map to an existing active component.
+- `defer`: leave out of current round.
+- `drop`: stop tracking as a reusable component.
+
+If a needed backend/App/embedded component exists as `active` or `mapped-active`, use it instead of inventing a new page-local pattern.
+
 ## Default working flow
 
 ### 1) Read readiness and define drawable scope
@@ -135,6 +160,13 @@ If backend configuration or rule judgment affects display, also map:
 - structure-only when only structure-draft is justified
 - demo draft when requirement is ready for visible validation
 - stronger visual expression only when design-enhancement mode is justified
+
+When the output will become a runnable React prototype, include a component-reuse note in the handoff:
+- which shared components should be used
+- which registry entries were mapped to existing active components
+- which candidates should be extracted
+- which needs-confirmation items still need product/design confirmation
+- which references are page-specific and should stay out of the shared library
 
 ### 4) Iterate carefully
 When receiving feedback, first decide whether the change is:
@@ -245,3 +277,8 @@ When optimizing, prefer adjusting:
 4. rule-change handling
 5. output structure
 6. annotation-readability for prototype review
+
+## Change Log
+
+- 2026-04-27: Added shared component registry lookup to demo design so visual iteration does not bypass `<projectsRoot>\_component-library`.
+- 2026-05-13: Added registry state triage so `planned` entries must be routed to candidate, needs-confirmation, mapped-active, deferred, or drop before downstream handoff.

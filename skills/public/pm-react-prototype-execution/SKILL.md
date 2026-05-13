@@ -96,6 +96,27 @@ For reusable templates, read these references only when needed:
 
 When a project template already provides example docs for page spec, state mapping, or config mapping, prefer following those examples instead of inventing a new page-spec shape for the round.
 
+Before creating or changing any PM React prototype page, read the shared component registry first when it exists:
+- `<projectsRoot>\_component-library\docs\registry\component-registry.md`
+
+Treat this shared component registry as the first reuse source for PM workflow projects. Use the project-local components only after checking whether a shared component already exists.
+
+Registry status handling:
+- `active`: directly reuse or extend the component.
+- `mapped-active`: use the mapped active component; do not create a duplicate component name.
+- `candidate`: if the current page needs it, extract formal component source and README before spreading another page-local implementation.
+- `needs-confirmation`: do not invent missing boundaries; ask, record the confirmation need, or keep the implementation page-local with a clear note.
+- `planned`: temporary only; route it by `next_action` before implementation continues.
+- `external-template`: use the referenced workflow/template shell source rather than treating it as component-library source debt.
+- `deferred` / `drop`: do not block the current prototype round.
+
+Allowed `next_action` values for `planned`:
+- `extract_component`: implement component source, docs, and reusable reference now or in the immediate component pass.
+- `wait_for_more_screens`: keep page-local until more references validate the pattern.
+- `merge_with_existing`: map to an existing active component.
+- `defer`: postpone.
+- `drop`: stop tracking.
+
 When the project already has a token layer, read the relevant tokens before styling new pages or components.
 Prefer token reuse over scattered hardcoded visual values.
 
@@ -108,6 +129,11 @@ When the round is strengthening a backend workbench from real screenshots:
   - tree/list/table containers
   - compact action-row patterns
 - keep those reusable assets inside the canonical template project first; promote only the stable method back into skills later
+
+For PM workflow projects under `<projectsRoot>`, prefer promoting stable reusable assets into:
+- `<projectsRoot>\_component-library`
+
+Do not hide reusable backend form controls, App display controls, or embedded review shells inside a business page when they belong to the shared component layer.
 
 ## Entry gate
 
@@ -205,6 +231,7 @@ Purpose:
 ### 2. Check reuse first
 
 Inspect only directly relevant:
+- shared component registry at `<projectsRoot>\_component-library\docs\registry\component-registry.md`
 - existing shared components
 - existing theme tokens
 - existing mock data
@@ -212,6 +239,8 @@ Inspect only directly relevant:
 
 Purpose:
 - reuse before creating
+- prevent rebuilding registered controls inside a business page
+- route every relevant `planned` registry entry by `next_action` before treating it as implementation guidance
 
 ### 3. Build page skeletons
 
@@ -250,6 +279,7 @@ When repetition is justified:
 
 Do not abstract too early just to look tidy.
 Do not leave stable visual decisions scattered across page files when a token layer already exists.
+Do not recreate controls that already exist in the shared component registry. If a needed control only exists as an inline implementation inside a template or business page, extract it into the shared component library before using it in a new business prototype.
 
 ### 6. Validate the prototype
 
@@ -302,7 +332,7 @@ Structure execution output around:
 1. round identity
 2. implemented pages
 3. state coverage
-4. shared asset updates
+4. shared asset updates and registry status changes
 5. validation result
 6. unresolved items
 7. next recommended action
@@ -322,3 +352,8 @@ Do not turn execution convenience into hidden business decisions.
 Keep the PM workflow as the brain and this skill as the hands.
 
 This skill should make React prototype work easier to continue, easier to validate, and easier to hand downstream.
+
+## Change Log
+
+- 2026-04-27: Added mandatory shared component registry lookup for PM workflow React prototype execution, pointing to `<projectsRoot>\_component-library`, to prevent ad-hoc recreation of existing backend/App/embedded components.
+- 2026-05-13: Added registry state triage so `planned` entries cannot become long-term backlog without `next_action` routing.

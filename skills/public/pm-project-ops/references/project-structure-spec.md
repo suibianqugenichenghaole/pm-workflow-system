@@ -21,8 +21,7 @@ If all artifacts are dumped into one folder, version relationships become implic
 ## Root layout
 
 Assume there is a configurable `projectsRoot`, for example:
-- `D:\pm-workflow-projects`
-- `E:\shared-pm-projects`
+- `<projectsRoot>`
 - `~/pm-workflow-projects`
 
 Under that root, each PM project gets its own directory.

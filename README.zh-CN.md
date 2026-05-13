@@ -11,6 +11,7 @@
 
 这次最大的升级点，不只是“workflow 更完整了”，而是**原型交付能力**被正式提了上来：
 - 截图 / 设计稿吸收不再只服务于一次性模仿，而是要沉成可复用的页面 grammar
+- 澄清后的需求可以继续整理成面向开发实现的页面型 PRD
 - 结构化 handoff 可以继续推进成可运行 React 原型基线
 - embedded PRD 不再只是左右分栏，而是和可运行原型保持联动
 - 可复用 UI 资产有 canonical template 作为沉淀落点
@@ -36,9 +37,10 @@
 1. 用 readiness 和规则收敛处理需求输入
 2. 用 Demo 迭代和 rule-change signal 推进结构表达
 3. 把设计参考吸收到可复用组件和页面 grammar
-4. 把稳定 handoff 推进成可运行 React 原型基线
-5. 产出和 Demo 保持联动的 embedded PRD
-6. 用稳定目录、版本、快照、索引方式管理项目资产
+4. 把已澄清需求整理成面向实现的页面型 PRD
+5. 把稳定 handoff 推进成可运行 React 原型基线
+6. 产出和 Demo 保持联动的 embedded PRD
+7. 用稳定目录、版本、快照、索引方式管理项目资产
 
 ---
 
@@ -48,6 +50,8 @@
 
 - `pm-design-absorption` 正式公开：截图 / 设计稿输入要沉成可复用 grammar，而不是一次性美化
 - `pm-react-prototype-execution` 正式公开：结构化 PM handoff 可以继续进入 React 原型执行
+- 新增 `pm-prd-writer`：用于从已澄清需求和当前原型基线写出面向实现的页面型 PRD
+- shared component registry 新增状态流转规则，区分 active、candidate、mapped-active、needs-confirmation、external-template、deferred、drop
 - embedded review shell 的规则更明确：App 和 backend 不该共用同一种默认壳偏置
 - 示例项目补了更实用的前置条件：做设计吸收前，先准备代表性截图素材
 详细变化见：[UPDATE-NOTES.md](./UPDATE-NOTES.md)
@@ -67,10 +71,11 @@
 - embedded PRD 组装
 - 项目基线与资产管理
 
-### 2）六段 PM + 原型工作流内核
-整个系统围绕 6 个核心技能构建，而且边界清楚：
+### 2）七段 PM + 原型工作流内核
+整个系统围绕 7 个核心技能构建，而且边界清楚：
 - `pm-requirement-intake`：需求 intake、readiness、规则收敛
 - `pm-demo-design`：Demo 生成、迭代、冻结前信号判断
+- `pm-prd-writer`：从已澄清需求写出页面型、开发可读 PRD
 - `pm-design-absorption`：把截图 / 设计稿吸收到可复用组件和页面 grammar
 - `pm-react-prototype-execution`：把结构化 handoff 变成可运行 React 原型基线
 - `pm-embedded-prd`：负责左文右原型交付壳和映射组织
@@ -79,7 +84,7 @@
 这不是一个“什么都做”的大 prompt，而是一套可拆职责的系统。
 
 ### 3）带命令式技能层，适合高频复用检查
-除了 6 个核心技能，还带一组更轻量的检查层：
+除了 7 个核心技能，还带一组更轻量的检查层：
 - `rule-change-signal`
 - `freeze-readiness-check`
 - `state-audit`
@@ -118,6 +123,7 @@
 ### 核心技能
 - `pm-requirement-intake`
 - `pm-demo-design`
+- `pm-prd-writer`
 - `pm-design-absorption`
 - `pm-react-prototype-execution`
 - `pm-embedded-prd`
@@ -147,6 +153,7 @@
 skills/public/
   pm-requirement-intake/
   pm-demo-design/
+  pm-prd-writer/
   pm-design-absorption/
   pm-react-prototype-execution/
   pm-embedded-prd/
@@ -156,6 +163,10 @@ skills/public/
   state-audit/
   embedded-prd-audit/
   memory-export-summary/
+
+docs/
+  component-library/
+    component-registry.md
 
 packaging/
   pm-workflow-init-spec.md
@@ -262,7 +273,7 @@ pwsh ./scripts/init-pm-workflow.ps1 -ProjectsRoot "D:\pm-workflow-projects" -For
 
 当前已经包含：
 - init 脚本与配置示例
-- 六个核心 PM / prototype 技能
+- 七个核心 PM / prototype 技能
 - 一组命令式检查技能
 - 一个轻量 sample-project 骨架
 - 更新说明与边界说明
