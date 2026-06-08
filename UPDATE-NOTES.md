@@ -85,3 +85,36 @@ Before the next GitHub sync, check at least these:
 - Added `docs/component-library/component-registry.md` as a registry-state reference for `active`, `candidate`, `needs-confirmation`, `mapped-active`, `external-template`, `deferred`, and `drop`.
 - Updated embedded PRD shell guidance to prefer canonical shell templates and record shell customization back to the template source when reusable.
 - Sanitized local project-root references to `<projectsRoot>` in public skill guidance.
+
+## 2026-06-07 skill-only public sync
+
+- Added:
+  - `request-triage`: routes incoming requests into fast, standard, or deep workflow lanes before PM work begins.
+  - `pm-value-anchor`: clarifies target value, minimum success, evidence, and scope implications before requirement intake.
+  - `audience-judgment-framing`: frames PRDs, reviews, embedded PRDs, and handoff artifacts around reader judgment and evidence needs.
+  - `pm-devil-advocate`: challenges value, assumptions, scope, evidence, and failure modes before expensive work accumulates.
+  - `pm-requirement-reverse-audit`: stress-tests high-risk requirement logic with business-model counterexamples before PRD review.
+- Updated:
+  - `pm-react-prototype-execution`: added vertical-slice guidance for risky prototype behavior paths and slice-level verification.
+- Packaging notes:
+  - README and README.zh-CN now group workflow intake, value framing, challenge, audit, production, and asset/memory skills separately.
+  - No project assets were included in this sync.
+- Sanitization:
+  - Local project-root references were rewritten to `<projectsRoot>`.
+  - Private project details were excluded.
+
+## 2026-06-08 skill-only public sync
+
+- Updated:
+  - `pm-prd-writer`: split the long body into on-demand `references/` files (operation branches, field/linkage/interaction, large-PRD compression, final self-check) so the core skill stays lean while the detailed templates load only when needed.
+  - `pm-react-prototype-execution`: moved the registry/reuse rules, full per-step execution detail, and per-page-spec/output expectations into `references/execution-and-reuse-detail.md`.
+  - `pm-project-ops`: moved the PM + React fusion operating pattern, continuation discipline, and method-migration rules into `references/pm-react-fusion-ops.md`.
+  - `pm-demo-design`: sharpened the description to claim the non-runnable "demo structure / page planning" lane and route runnable React implementation to `pm-react-prototype-execution`.
+  - `pm-devil-advocate`: added colloquial challenge triggers and symmetric routing to `pm-requirement-reverse-audit` for high-risk transaction/state/role requirements.
+- Packaging notes:
+  - README / README.zh-CN skill list and positioning unchanged (no skills added or removed); only existing skills were refined.
+  - No project assets were included in this sync.
+- Sanitization:
+  - Local absolute paths rewritten to `<projectsRoot>` placeholders.
+  - Out-of-package routing references (skills not published here) were checked and kept excluded.
+  - Private project details were excluded.

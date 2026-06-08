@@ -178,6 +178,7 @@ Read or use these only when relevant:
 - `references/project-structure-spec.md` for directory and asset layout expectations
 - `references/version-and-snapshot-rules.md` for stage/version/baseline discipline
 - `references/migration-and-root-config.md` for root/config/init/migration rules
+- `references/pm-react-fusion-ops.md` for the full PM + React fusion operating pattern, continuation discipline, and method-migration rules
 - `freeze-readiness-check` when whether to preserve a review or delivery baseline is the real question
 - `memory-export-summary` when exporting concise long-term summaries from project assets
 
@@ -193,57 +194,11 @@ Follow these rules:
    - whether it is working, frozen, historical, or the current main entry
 4. a chat reply alone does not automatically become a project asset
 
-## PM + React fusion operating pattern
+## PM + React fusion, continuation & method migration
 
-When the workflow includes runnable React prototype work, do not stop at "there is a demo file" or "there is a React project". Make the round legible through explicit operational objects.
+When the workflow includes runnable React prototype work, make the round legible through explicit operational objects: a current pointer, a freeze-readiness judgment, a preserved review baseline, a project-local working-memory area, and an explicit embedded-PRD pairing when relevant. Keep continuation obvious so it never depends on remembering the conversation, and when absorbing methods from another workflow, extract reusable method rules rather than pilot business content.
 
-At minimum, maintain:
-- one project-level current pointer file that tells readers what the active trusted round is
-- one freeze-readiness judgment file for the current round when review or delivery preservation is being considered
-- one preserved review baseline package when a round becomes worth referencing
-- one project-local working memory area that carries active-round continuation without bloating global memory
-- one explicit embedded-PRD pairing when left-doc/right-prototype review is part of the round
-
-Prefer this minimum structure for PM + React fusion projects:
-- `pm/baselines/current-baseline.md`
-- `pm/baselines/freeze-readiness-current.md`
-- `pm/baselines/review-baseline-vX.Y.md`
-- `pm/baselines/review-baseline-vX.Y.json`
-- `src/docs/project-memory/current.md`
-- `src/docs/project-memory/decisions.md`
-- `src/docs/project-memory/open-questions.md`
-- `src/docs/project-memory/changelog.md`
-- `draft/prd/embedded-prd-review-vX.Y.md`
-- `draft/prd/embedded-prd-review-vX.Y.html`
-- `draft/mappings/embedded-prd-linkage-vX.Y.json`
-
-If a project does not yet need embedded PRD, keep the baseline and working-memory layers anyway.
-
-## Continuation discipline
-
-For PM + React fusion projects, always make continuation obvious.
-
-The current pointer should answer:
-- what the active round is
-- whether the project is still in working state or has a preserved review baseline
-- which requirement baseline, handoff, React entry, page spec, and embedded PRD belong to this round
-- where the next editing round should resume
-
-The preserved review baseline should answer:
-- what exactly was frozen
-- what it covers
-- what it does not cover
-- which files represent the stable reference point
-
-Do not let continuation depend on remembering the conversation.
-
-## Migration rule for imported methods
-
-When absorbing ideas from another workflow such as Axhub Make:
-- extract reusable method and asset-management rules, not business content from a pilot project
-- keep imported reference material outside the formal project root until it is normalized into the template or current project assets
-- do not leave critical method steps stranded in temporary folders such as `Downloads`
-- once a pilot validates a pattern, write it back into skill/template rules so future projects do not depend on re-reading the pilot
+Full operating pattern, recommended file structure, continuation checklist, and method-migration rules: `references/pm-react-fusion-ops.md`.
 
 ## Minimum acceptance for "workflow fused"
 
@@ -280,3 +235,7 @@ When optimizing, prefer adjusting:
 3. version relationship structure
 4. memory-summary export pattern
 5. project root / migration constraints
+
+<!-- Change trace
+- 2026-06-07: Moved the PM + React fusion operating pattern, continuation discipline, and method-migration rules to `references/pm-react-fusion-ops.md` to keep the SKILL body lean. No rules removed; detail moved on-demand.
+-->

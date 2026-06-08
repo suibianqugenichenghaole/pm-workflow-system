@@ -1,6 +1,6 @@
 ---
 name: pm-react-prototype-execution
-description: Turn a structured PM demo handoff into a runnable React prototype baseline with page specs, local project working memory, shared asset accumulation, and minimum runtime validation. Use when a requirement is already ready for demo/prototype execution and the goal is to build a maintainable React prototype instead of only discussing screens.
+description: "触发：ready demo handoff需做可运行React原型；不触发：需求/规则不稳→用pm-requirement-intake；嵌入式组装→用pm-embedded-prd；输出：React原型基线"
 ---
 
 # PM React Prototype Execution
@@ -15,6 +15,7 @@ This skill should:
 - read a bounded PM handoff instead of reconstructing intent from raw chat
 - build or update React prototype pages
 - keep page code and page-level `spec.md` aligned
+- implement by small verifiable vertical slices when behavior risk is high
 - accumulate reusable theme/component/data assets only when justified
 - validate that the built prototype can actually run
 - write high-frequency continuity into project-local working memory instead of global memory
@@ -41,38 +42,9 @@ When blocked by unstable requirement logic, return the issue upstream instead of
 
 ## Relationship with existing PM skills
 
-### Upstream: `pm-requirement-intake`
+Upstream `pm-requirement-intake` owns clarification, readiness, and rule-gap identification (do not replace it); upstream `pm-demo-design` hands off the structured round (identity, goal, page list/modules/states, interactions, rule-to-UI mapping, data, out-of-scope, unstable items) that this skill consumes. Downstream `pm-embedded-prd` consumes the prototype baseline as the right-side artifact; downstream `pm-project-ops` manages it as a versioned first-class artifact.
 
-That skill still owns:
-- requirement clarification
-- readiness judgment
-- rule-gap identification
-
-This skill must not replace it.
-
-### Upstream: `pm-demo-design`
-
-That skill should hand off:
-- round identity
-- round goal
-- page list
-- page modules
-- page states
-- key interactions
-- rule-to-UI mapping
-- data expectations
-- out-of-scope items
-- known unstable items
-
-This skill consumes that handoff and builds the actual prototype baseline.
-
-### Downstream: `pm-embedded-prd`
-
-That skill should consume the prototype baseline produced here as the right-side artifact.
-
-### Downstream: `pm-project-ops`
-
-That skill should manage the prototype baseline produced here as a first-class artifact with explicit version/baseline identity.
+Full per-skill handoff detail: `references/execution-and-reuse-detail.md`.
 
 ## Read order
 
@@ -94,46 +66,14 @@ For reusable templates, read these references only when needed:
 - `references/prototype-page-spec-template.md`
 - `references/project-layout-template.md`
 
+For execution detail, load only when executing a round:
+- `references/execution-and-reuse-detail.md`: registry/reuse rules, full per-step execution detail, per-page-spec and output expectations.
+
 When a project template already provides example docs for page spec, state mapping, or config mapping, prefer following those examples instead of inventing a new page-spec shape for the round.
 
-Before creating or changing any PM React prototype page, read the shared component registry first when it exists:
-- `<projectsRoot>\_component-library\docs\registry\component-registry.md`
+Before creating or changing any PM React prototype page, read the shared component registry first when it exists (`<projectsRoot>/_component-library/docs/registry/component-registry.md`) and treat it as the first reuse source — use project-local components only after checking for a shared one. Reuse token layers over hardcoded visuals, and do not hide reusable backend/App/embedded controls inside a business page when they belong to the shared component layer.
 
-Treat this shared component registry as the first reuse source for PM workflow projects. Use the project-local components only after checking whether a shared component already exists.
-
-Registry status handling:
-- `active`: directly reuse or extend the component.
-- `mapped-active`: use the mapped active component; do not create a duplicate component name.
-- `candidate`: if the current page needs it, extract formal component source and README before spreading another page-local implementation.
-- `needs-confirmation`: do not invent missing boundaries; ask, record the confirmation need, or keep the implementation page-local with a clear note.
-- `planned`: temporary only; route it by `next_action` before implementation continues.
-- `external-template`: use the referenced workflow/template shell source rather than treating it as component-library source debt.
-- `deferred` / `drop`: do not block the current prototype round.
-
-Allowed `next_action` values for `planned`:
-- `extract_component`: implement component source, docs, and reusable reference now or in the immediate component pass.
-- `wait_for_more_screens`: keep page-local until more references validate the pattern.
-- `merge_with_existing`: map to an existing active component.
-- `defer`: postpone.
-- `drop`: stop tracking.
-
-When the project already has a token layer, read the relevant tokens before styling new pages or components.
-Prefer token reuse over scattered hardcoded visual values.
-
-When the round is strengthening a backend workbench from real screenshots:
-- do not stop at token tuning
-- first check whether the missing realism is actually a reusable component grammar issue
-- prefer extracting stable backend building blocks such as:
-  - filter bars
-  - toolbars
-  - tree/list/table containers
-  - compact action-row patterns
-- keep those reusable assets inside the canonical template project first; promote only the stable method back into skills later
-
-For PM workflow projects under `<projectsRoot>`, prefer promoting stable reusable assets into:
-- `<projectsRoot>\_component-library`
-
-Do not hide reusable backend form controls, App display controls, or embedded review shells inside a business page when they belong to the shared component layer.
+Full registry status handling (`active` / `mapped-active` / `candidate` / `needs-confirmation` / `planned` / `external-template` / `deferred` / `drop`), `planned` `next_action` routing, token-reuse, and backend-block extraction/promotion rules: `references/execution-and-reuse-detail.md`.
 
 ## Entry gate
 
@@ -169,6 +109,12 @@ Minimum:
 
 If any gate fails, stop and say which missing condition blocks execution.
 
+## Vertical slice principle
+
+For non-trivial prototype work, prefer small vertical slices (one visible behavior path checked end to end) over broad horizontal implementation. Use slices for state-heavy, interaction-heavy, config-driven, cross-surface, or drift-prone pages; build just enough skeleton to make the slice visible, then implement it end to end. Do not build all static layout, style every module, or extract components before one concrete behavior path proves the pattern. When in doubt, pick the slice that carries the most product truth.
+
+Worked examples and the full when-to-use / what-to-avoid lists: `references/execution-and-reuse-detail.md`.
+
 ## Expected project-local memory
 
 This skill prefers a local project working memory area.
@@ -192,111 +138,22 @@ Global memory should keep only:
 
 ## Recommended project layout
 
-This skill works best when the project has at least:
-
-```text
-project-root/
-  src/
-    prototypes/
-    components/
-    themes/
-    database/
-    docs/
-      project-memory/
-  pm/
-    handoffs/
-    baselines/
-```
-
-Adapt to the real project if it already has an established structure, but preserve the same separation of concerns.
-
-When a new fusion project needs a starting skeleton, use:
-- `references/project-layout-template.md`
+Prefer a project with at least `src/{prototypes,components,themes,database,docs/project-memory}` and `pm/{handoffs,baselines}`. Adapt to an established structure but preserve the same separation of concerns. For a new fusion project's starting skeleton, use `references/project-layout-template.md`; the full layout diagram is in `references/execution-and-reuse-detail.md`.
 
 ## Execution flow
 
-Follow this order.
+Follow this order:
 
-### 1. Confirm current round
+1. Confirm current round (round goal, in-scope pages, out-of-scope, known unstable) to prevent silent scope expansion.
+2. Check reuse first (registry, shared components, tokens, mock data, related pages) before creating; route `planned` entries by `next_action`.
+3. Build page skeletons (`index.tsx`, `spec.md`, `style.css` only when needed); initialize `spec.md` from `references/prototype-page-spec-template.md`; leave state/config coverage notes for state-heavy pages.
+4. Choose the first vertical slice when the page is complex; define trigger, modules, before/after states, failure/boundary, data, rule-to-UI mapping, and validation method.
+5. Implement only this round's default state, key alternate states, and core interactions; finish a slice before starting the next.
+6. Accumulate shared assets carefully — extract components/tokens/mock only when repetition justifies it; never recreate registered controls.
+7. Validate the prototype (compiles, loads, no obvious runtime failures); for risky slices, verify the trigger, success state, and failure/boundary state or document the gap.
+8. Update project-local memory (`current.md`, `decisions.md`, `open-questions.md`, `changelog.md`) after meaningful progress.
 
-Restate:
-- round goal
-- in-scope pages
-- out-of-scope items
-- known unstable items
-
-Purpose:
-- prevent silent scope expansion
-
-### 2. Check reuse first
-
-Inspect only directly relevant:
-- shared component registry at `<projectsRoot>\_component-library\docs\registry\component-registry.md`
-- existing shared components
-- existing theme tokens
-- existing mock data
-- directly related pages
-
-Purpose:
-- reuse before creating
-- prevent rebuilding registered controls inside a business page
-- route every relevant `planned` registry entry by `next_action` before treating it as implementation guidance
-
-### 3. Build page skeletons
-
-For each in-scope page, create or update:
-- `index.tsx`
-- `spec.md`
-- `style.css` only when needed
-
-When `spec.md` does not exist yet, initialize it from:
-- `references/prototype-page-spec-template.md`
-
-Purpose:
-- make each page a real tracked artifact
-
-If the page is configuration-driven or state-heavy, also leave enough adjacent documentation for future continuation to answer:
-- which states were truly covered this round
-- which config or rule items affect visible UI
-
-This can live inside `spec.md` or in nearby mapping docs, but it must exist somewhere obvious.
-
-### 4. Implement states and interactions
-
-Implement only the current round's:
-- default state
-- key alternate states
-- core interactions
-
-Do not silently expand into deferred cases.
-
-### 5. Accumulate shared assets carefully
-
-When repetition is justified:
-- extract shared components
-- update theme assets
-- create or update minimal mock data
-
-Do not abstract too early just to look tidy.
-Do not leave stable visual decisions scattered across page files when a token layer already exists.
-Do not recreate controls that already exist in the shared component registry. If a needed control only exists as an inline implementation inside a template or business page, extract it into the shared component library before using it in a new business prototype.
-
-### 6. Validate the prototype
-
-Run a minimum runtime/build validation so the round produces a runnable baseline instead of an aspirational one.
-
-Validation should answer:
-- does it compile
-- does it load
-- are obvious runtime failures present
-
-### 7. Update project-local memory
-
-After meaningful progress:
-- update `current.md`
-- append confirmed implementation decisions to `decisions.md`
-- append unresolved blockers to `open-questions.md`
-- append a compact trace line to `changelog.md`
+Full per-step detail (sub-checklists, purposes, validation depth, TDD boundary): `references/execution-and-reuse-detail.md`.
 
 ## Minimum per-page contract
 
@@ -308,34 +165,11 @@ Each in-scope page should leave the round with:
 
 This prevents future rounds from depending on conversation archaeology.
 
-## Per-page spec expectations
+## Per-page spec & output expectations
 
-The page-level `spec.md` should stay implementation-adjacent and capture:
-- page goal
-- main modules
-- states implemented in the current round
-- key interactions
-- data needs
-- known gaps
+Each page-level `spec.md` stays implementation-adjacent (page goal, modules, states implemented this round, interactions, data needs, known gaps; plus state/config-to-UI mapping for complex pages) and must stay aligned when code changes materially. Structure execution output around round identity, implemented pages, vertical slices, state coverage, shared-asset/registry changes, validation result, unresolved items, and next action.
 
-For state-heavy or config-driven pages, also capture or point to:
-- state mapping
-- config/rule-to-UI mapping
-
-When the project uses backend/app token files, note the main token families the page depends on.
-
-If code changes materially, keep the page spec aligned.
-
-## Output expectations
-
-Structure execution output around:
-1. round identity
-2. implemented pages
-3. state coverage
-4. shared asset updates and registry status changes
-5. validation result
-6. unresolved items
-7. next recommended action
+Full spec field list and per-slice output naming: `references/execution-and-reuse-detail.md`.
 
 ## Failure rules
 
@@ -355,5 +189,7 @@ This skill should make React prototype work easier to continue, easier to valida
 
 ## Change Log
 
-- 2026-04-27: Added mandatory shared component registry lookup for PM workflow React prototype execution, pointing to `<projectsRoot>\_component-library`, to prevent ad-hoc recreation of existing backend/App/embedded components.
+- 2026-04-27: Added mandatory shared component registry lookup for PM workflow React prototype execution, pointing to `<projectsRoot>/_component-library`, to prevent ad-hoc recreation of existing backend/App/embedded components.
 - 2026-05-13: Added registry state triage so `planned` entries cannot become long-term backlog without `next_action` routing.
+- 2026-05-14: Added vertical-slice execution and prototype verification guardrails so complex prototype work proves one behavior path end to end before broadening.
+- 2026-06-07: Split over-budget body into `references/execution-and-reuse-detail.md` (registry/reuse rules, full per-step execution detail, per-page-spec/output expectations) to keep the SKILL body lean. No rules removed; detail moved on-demand.

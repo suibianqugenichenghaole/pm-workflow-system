@@ -41,14 +41,14 @@ This system tries to fix that by giving PM work a structured operating model:
 
 ## What changed in this release
 
-The biggest change is that the system now better reflects the prototype-delivery side instead of reading like a pure PM process kit.
+This skill-only release combines a workflow-shape expansion with a leaner execution layer.
 
-- `pm-design-absorption` is now public: screenshot and mockup intake should become reusable component grammar, not just visual imitation
-- `pm-react-prototype-execution` is now public: structured PM handoff can continue into a runnable React prototype baseline
-- `pm-prd-writer` is included for page-oriented, implementation-readable Chinese PRD writing
-- shared component registry status rules now distinguish active, candidate, mapped-active, needs-confirmation, external-template, deferred, and drop
-- embedded review shell guidance is stronger: App and backend review pages should not share the same default shell bias
-- sample-project guidance now calls out practical preconditions such as preparing representative screenshots before design-heavy rounds
+- Added public entry and judgment skills: `request-triage`, `pm-value-anchor`, and `audience-judgment-framing`
+- Added challenge skills: `pm-devil-advocate` and `pm-requirement-reverse-audit`
+- Refined `pm-react-prototype-execution` with vertical-slice guidance and moved detailed execution/reuse rules into on-demand references
+- Split the long `pm-prd-writer` body into on-demand references for operation branches, field/linkage/interaction examples, large-PRD compression, and final self-checks
+- Moved PM + React fusion operating detail in `pm-project-ops` into an on-demand reference
+- Clarified that `pm-demo-design` owns non-runnable demo structure/page planning, while runnable React work routes to `pm-react-prototype-execution`
 
 See [UPDATE-NOTES.md](./UPDATE-NOTES.md) for the detailed packaging delta.
 
@@ -67,8 +67,15 @@ That path includes:
 - embedded PRD assembly
 - project baseline and artifact management
 
-### 2) Seven-part PM + prototype kernel
-The workflow is centered around seven core skills with clear boundaries:
+### 2) PM + prototype workflow kernel
+The workflow is centered around clear skill groups with separable responsibilities.
+
+Workflow intake and value framing:
+- `request-triage` - choose fast, standard, or deep workflow depth before over-processing or under-processing a request
+- `pm-value-anchor` - clarify target value, minimum success, evidence, and tradeoffs before requirement intake
+- `audience-judgment-framing` - define the reader, expected judgment, and evidence needs for PRDs, reviews, and handoff artifacts
+
+Core production skills:
 - `pm-requirement-intake` - requirement intake, readiness, and rule convergence
 - `pm-demo-design` - demo generation, iteration, and freeze-readiness signaling
 - `pm-prd-writer` - page-oriented, implementation-readable PRD writing from clarified requirements
@@ -79,15 +86,17 @@ The workflow is centered around seven core skills with clear boundaries:
 
 This is not one giant "do everything" prompt. It is a modular workflow with separable responsibilities.
 
-### 3) Command-style skills for repeatable checks
-The package also includes narrower command-style skills for recurring tasks:
+### 3) Challenge and audit skills for repeatable checks
+The package also includes narrower challenge and command-style skills for recurring tasks:
+- `pm-devil-advocate`
+- `pm-requirement-reverse-audit`
 - `rule-change-signal`
 - `freeze-readiness-check`
 - `state-audit`
 - `embedded-prd-audit`
 - `memory-export-summary`
 
-These make review and audit-style actions easier to trigger and standardize.
+These make challenge, review, audit, and memory-safe continuation actions easier to trigger and standardize.
 
 ### 4) Explicit project structure and version management
 This workflow does not assume that project assets should live in random folders or be tracked by memory alone.
@@ -115,6 +124,9 @@ The system is expected to initialize a project-assets root explicitly rather tha
 ## What is included
 
 ### Core skills
+- `request-triage`
+- `pm-value-anchor`
+- `audience-judgment-framing`
 - `pm-requirement-intake`
 - `pm-demo-design`
 - `pm-prd-writer`
@@ -124,6 +136,8 @@ The system is expected to initialize a project-assets root explicitly rather tha
 - `pm-project-ops`
 
 ### Command-style skills
+- `pm-devil-advocate`
+- `pm-requirement-reverse-audit`
 - `rule-change-signal`
 - `freeze-readiness-check`
 - `state-audit`
@@ -145,6 +159,9 @@ The system is expected to initialize a project-assets root explicitly rather tha
 
 ```text
 skills/public/
+  request-triage/
+  pm-value-anchor/
+  audience-judgment-framing/
   pm-requirement-intake/
   pm-demo-design/
   pm-prd-writer/
@@ -152,6 +169,8 @@ skills/public/
   pm-react-prototype-execution/
   pm-embedded-prd/
   pm-project-ops/
+  pm-devil-advocate/
+  pm-requirement-reverse-audit/
   rule-change-signal/
   freeze-readiness-check/
   state-audit/

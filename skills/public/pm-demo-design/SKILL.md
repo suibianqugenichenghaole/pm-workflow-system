@@ -1,6 +1,6 @@
 ---
 name: pm-demo-design
-description: Generate and iterate product demos from a structured requirement skeleton, focusing on pages, modules, states, interaction flow, and business-rule expression rather than generic UI beautification. Use when a requirement is ready for prototype/draft-level visualization, when a product manager wants a clickable demo to validate and tweak, or when business rules, state changes, target users, design context, and backend-config effects must be reflected in demo output.
+description: Generate and iterate product demos from a structured requirement skeleton, focusing on demo structure / page planning (not a runnable build) — pages, modules, states, interaction flow, and business-rule expression rather than generic UI beautification. Use when a requirement is ready for prototype/draft-level visualization, when a product manager wants a clickable demo to validate and tweak, or when business rules, state changes, target users, design context, and backend-config effects must be reflected in demo output. For a runnable React implementation, route to pm-react-prototype-execution.
 ---
 
 # PM Demo Design
@@ -282,3 +282,4 @@ When optimizing, prefer adjusting:
 
 - 2026-04-27: Added shared component registry lookup to demo design so visual iteration does not bypass `<projectsRoot>\_component-library`.
 - 2026-05-13: Added registry state triage so `planned` entries must be routed to candidate, needs-confirmation, mapped-active, deferred, or drop before downstream handoff.
+- 2026-06-07: Sharpened description to claim the "demo structure / page planning (non-runnable)" lane and route runnable React implementation to pm-react-prototype-execution, reducing trigger ambiguity between the two skills.
