@@ -44,8 +44,6 @@
 10. 用挑战、反证、状态审计和冻结检查控制评审前风险
 11. 用稳定目录、版本、快照、索引方式管理项目资产
 
----
-
 ## 核心特点
 
 ### 1）覆盖完整 PM 交付链
@@ -76,6 +74,7 @@
 
 核心生产链路：
 - `pm-requirement-intake`：需求 intake、readiness、规则收敛
+- `prototype-export-intake`：从原型导出包中提取结构化证据，再进入需求确认
 - `pm-demo-design`：Demo 生成、迭代、冻结前信号判断
 - `pm-prd-writer`：从已澄清需求写出页面型、开发可读 PRD
 - `pm-design-absorption`：把截图 / 设计稿吸收到可复用组件和页面 grammar
@@ -136,17 +135,16 @@
 
 ## 本次更新
 
-本轮为 skill-only 更新，同时包含 2026-06-07 的公开技能扩展和 2026-06-08 的既有技能精简 / 拆分：
+- 新增 `prototype-export-intake`：在需求确认前，从原型导出包中提取页面结构、批注、视觉资源和未决冲突。
 
-- 新增 `request-triage`、`pm-value-anchor`、`audience-judgment-framing`，把请求分流、价值锚定、读者判断放到需求 intake 之前
-- 新增 `pm-devil-advocate`、`pm-requirement-reverse-audit`，补齐通用反向挑战和高风险需求反证审计
-- `pm-prd-writer`：把过长的正文拆进按需加载的 `references/`（操作分支、字段联动与交互、大型 PRD 压缩、最终自检清单），核心技能更精简，详细模板只在需要时加载
-- `pm-react-prototype-execution`：把组件复用/注册规则、完整分步执行细节、页面 spec 与输出预期移到 `references/execution-and-reuse-detail.md`
-- `pm-project-ops`：把 PM + React 融合操作模式、续接纪律、方法迁移规则移到 `references/pm-react-fusion-ops.md`
-- `pm-demo-design`：description 明确认领“demo 结构 / 页面规划（非可运行）”这条道，把“可运行 / 能跑的 React 实现”路由到 `pm-react-prototype-execution`
-- `pm-devil-advocate`：补充口语化挑刺触发词，并与 `pm-requirement-reverse-audit` 建立对称路由，高风险交易 / 状态 / 角色需求会被导向更锋利的反证矩阵
+---
 
-详细变化见：[UPDATE-NOTES.md](./UPDATE-NOTES.md)。
+## 历史更新
+
+- **2026-06-08：公开 workflow skills 更新**：补齐请求判断和挑战 skills，细化 PRD、可运行原型执行与项目资产管理的 references。
+- **2026-05-13：workflow skills 与组件注册表更新**：补强可复用组件注册表指导和公开工作流包结构。
+- **2026-04-16：公开文档与包定位重构**：刷新公开文档、脱敏示例，并明确端到端原型交付定位。
+- **2026-03-26：首次公开发布**：建立 PM workflow 公开包、中英 README 入口与初始打包边界。
 
 ---
 
@@ -194,6 +192,7 @@ skills/public/
   pm-value-anchor/
   audience-judgment-framing/
   pm-requirement-intake/
+  prototype-export-intake/
   pm-demo-design/
   pm-prd-writer/
   pm-design-absorption/

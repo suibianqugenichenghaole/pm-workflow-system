@@ -6,6 +6,17 @@ It is meant to help with the next public-sync round, not to replace the README.
 
 ---
 
+## 2026-08-03 public sync
+
+- Added:
+  - `prototype-export-intake`: extracts page structure, annotation text, visual resources, and unresolved conflicts from exported prototype packages before requirement confirmation.
+- Packaging notes:
+  - README and README.zh-CN add the skill to the current update and skill list.
+- Sanitization:
+  - The skill describes generic export evidence and does not include real project data.
+
+---
+
 ## What changed in the internal workflow line
 
 - the workflow is no longer only `requirement -> demo -> embedded PRD -> project ops`

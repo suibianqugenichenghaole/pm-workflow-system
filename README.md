@@ -37,20 +37,18 @@ This system tries to fix that by giving PM work a structured operating model:
 6. assemble embedded PRDs that stay linked to demo review
 7. store project assets, versions, baselines, and snapshots in a stable structure
 
+## What's new
+
+- Added `prototype-export-intake` for extracting page structure, annotations, visual resources, and unresolved conflicts from exported prototype packages before requirements are finalized.
+
 ---
 
-## What changed in this release
+## Release history
 
-This skill-only release combines a workflow-shape expansion with a leaner execution layer.
-
-- Added public entry and judgment skills: `request-triage`, `pm-value-anchor`, and `audience-judgment-framing`
-- Added challenge skills: `pm-devil-advocate` and `pm-requirement-reverse-audit`
-- Refined `pm-react-prototype-execution` with vertical-slice guidance and moved detailed execution/reuse rules into on-demand references
-- Split the long `pm-prd-writer` body into on-demand references for operation branches, field/linkage/interaction examples, large-PRD compression, and final self-checks
-- Moved PM + React fusion operating detail in `pm-project-ops` into an on-demand reference
-- Clarified that `pm-demo-design` owns non-runnable demo structure/page planning, while runnable React work routes to `pm-react-prototype-execution`
-
-See [UPDATE-NOTES.md](./UPDATE-NOTES.md) for the detailed packaging delta.
+- **2026-06-08 — Public workflow skills refresh**: added request-framing and challenge skills, refined PRD and runnable-prototype references, and clarified project-operations boundaries.
+- **2026-05-13 — Workflow skills and component-registry refresh**: strengthened reusable component-registry guidance and the public workflow package structure.
+- **2026-04-16 — Documentation and public-package reframing**: refreshed the public documentation, sanitized examples, and clarified the end-to-end prototype-delivery positioning.
+- **2026-03-26 — Initial public release**: established the public PM workflow package, bilingual README entry, and initial packaging boundary.
 
 ---
 
@@ -77,6 +75,7 @@ Workflow intake and value framing:
 
 Core production skills:
 - `pm-requirement-intake` - requirement intake, readiness, and rule convergence
+- `prototype-export-intake` - extracts structured evidence from exported prototype packages before requirement confirmation
 - `pm-demo-design` - demo generation, iteration, and freeze-readiness signaling
 - `pm-prd-writer` - page-oriented, implementation-readable PRD writing from clarified requirements
 - `pm-design-absorption` - absorb screenshots and mockups into reusable components and page grammar
@@ -163,6 +162,7 @@ skills/public/
   pm-value-anchor/
   audience-judgment-framing/
   pm-requirement-intake/
+  prototype-export-intake/
   pm-demo-design/
   pm-prd-writer/
   pm-design-absorption/
